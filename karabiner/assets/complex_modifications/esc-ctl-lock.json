@@ -1,0 +1,30 @@
+{
+  "title": "Caps Lock to ESC on press - CTL on hold",
+  "rules": [
+    {
+      "description": "Caps Lock to ESC on press - CTL on hold",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "escape",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_control",
+              "lazy": true
+            }
+          ],
+          "to_if_alone": [
+            {
+              "key_code": "escape"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

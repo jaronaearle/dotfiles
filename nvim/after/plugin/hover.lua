@@ -1,0 +1,16 @@
+-- require("hover").setup {
+--     init = function()
+--         -- providers
+--         require("hover.providers.lsp")
+--     end,
+--     preview_opts = {
+--         border = nil
+--     },
+--     -- whether content of a currently opened hover window should be moved
+--     -- to a :h preview window when pressing hover keymap
+--     preview_window = false,
+--     title = true
+-- }
+--
+-- vim.keymap.set("n", "K", require("hover").hover, {desc = "hover.nvim"})
+-- vim.keymap.set("n", "gK", require("hover").hover_select, {desc = "hover.nvim (select)"})

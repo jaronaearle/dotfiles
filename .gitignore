@@ -1,0 +1,5 @@
+.DS_Store
+
+nvim/plugin/*
+tmux/plugins/*
+karabiner/automatic_backups/*

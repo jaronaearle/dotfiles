@@ -1,0 +1,63 @@
+{
+  "title": "TAB: Converts backwards delete to forward delete and w to left opt",
+  "rules": [
+    {
+      "description": "TAB + backspace converts backwards delete to forward delete",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "delete_or_backspace",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "delete_forward",
+              "lazy": true
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "tab pressed",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "keycode": "tab",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "tab"
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "tab pressed",
+                "value": 1
+              },
+              "lazy": true
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "set_variable": {
+                "name": "tab pressed",
+                "value": 0
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
