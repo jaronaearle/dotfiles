@@ -61,16 +61,15 @@ require("formatter").setup {
     }
 }
 
- vim.api.nvim_exec(
-     [[
+vim.api.nvim_exec(
+    [[
          augroup FormatAutogroup
              autocmd!
              autocmd BufWritePost * FormatWrite
          augroup END
      ]],
-     true
- )
+    true
+)
 
 -- leader f to format
 vim.api.nvim_set_keymap("n", "<leader>f", "<cmd>Format<CR>", {noremap = true, silent = true})
-

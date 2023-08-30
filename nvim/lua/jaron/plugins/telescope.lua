@@ -148,9 +148,9 @@ telescope.setup(
                 "yarn.lock",
                 "package-lock.json",
                 ".git",
-                ".DS_Store",
-                "ios",
-                "android"
+                ".DS_Store"
+                -- "ios",
+                -- "android"
             }
         },
         extensions = {

@@ -39,10 +39,12 @@ return require("packer").startup(
         use {
             "rmagatti/auto-session",
             config = function()
-                require("auto-session").setup {
-                    log_level = "error",
-                    auto_session_suppress_dirs = {"~/", "~/Projects", "~/Downloads", "/"}
-                }
+                --     require("auto-session").setup {
+                --         log_level = "error",
+                --         auto_session_suppress_dirs = {"~/", "~/Projects", "~/Downloads", "/"}
+                --     }
+                -- end
+                require("jaron.plugins.auto-session")
             end
         }
         -- tmux
@@ -59,12 +61,25 @@ return require("packer").startup(
         -- Treesitter
         use {
             "nvim-treesitter/nvim-treesitter",
-            run = ":TSUpdate"
+            run = ":TSUpdate",
+            config = function()
+                require("jaron.plugins.treesitter")
+            end
         }
         -- Telescope
         use {
             "nvim-telescope/telescope.nvim",
-            tag = "0.1.1"
+            tag = "0.1.1",
+            config = function()
+                require("jaron.plugins.telescope")
+            end
+        }
+        use {
+            "nvim-telescope/telescope-file-browser.nvim",
+            requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"}
+        }
+        use {
+            "nvim-telescope/telescope-ui-select.nvim"
         }
         -- required for telescope
         use("nvim-lua/plenary.nvim")
@@ -78,24 +93,55 @@ return require("packer").startup(
         -- toggle terminal
         use {
             "akinsho/toggleterm.nvim",
-            tag = "*"
+            tag = "*",
+            config = function()
+                require("jaron.plugins.toggleterm")
+            end
         }
         -- formatter
-        use {"mhartington/formatter.nvim"}
+        use {
+            "mhartington/formatter.nvim",
+            config = function()
+                require("jaron.plugins.formatter")
+            end
+        }
         -- copilot
-        use("zbirenbaum/copilot.lua")
+        use {
+            "zbirenbaum/copilot.lua",
+            config = function()
+                require("jaron.plugins.copilot")
+            end
+        }
         -- toggle comments
-        use("numToStr/Comment.nvim")
+        use {
+            "numToStr/Comment.nvim",
+            config = function()
+                require("jaron.plugins.comment")
+            end
+        }
         -- auto pair
         use {
-            "windwp/nvim-autopairs"
+            "windwp/nvim-autopairs",
+            config = function()
+                require("jaron.plugins.auto-pairs")
+            end
         }
         -- auto detect indentation
-        use("nmac427/guess-indent.nvim")
+        use {
+            "nmac427/guess-indent.nvim",
+            config = function()
+                require("jaron.plugins.guess-indent")
+            end
+        }
         -- show inline git blame
         use("f-person/git-blame.nvim")
         -- indent blankline
-        use("lukas-reineke/indent-blankline.nvim")
+        use {
+            "lukas-reineke/indent-blankline.nvim",
+            config = function()
+                require("jaron.plugins.indent-blankline")
+            end
+        }
         -- undo tree
         use("mbbill/undotree")
         -- add the dressing plugin for a nicer looking ui as shown in the demo video
@@ -110,15 +156,21 @@ return require("packer").startup(
             config = function()
                 vim.o.timeout = true
                 vim.o.timeoutlen = 300
+                require("jaron.plugins.which-key")
             end
         }
         -- diffview
-        use {"sindrets/diffview.nvim"}
+        use {
+            "sindrets/diffview.nvim",
+            config = function()
+                require("jaron.plugins.diffview")
+            end
+        }
         -- nvim test runner
         use {
             "klen/nvim-test",
             config = function()
-                require("nvim-test").setup()
+                require("jaron.plugins.nvim-test")
             end
         }
         use {
@@ -126,14 +178,110 @@ return require("packer").startup(
             requires = {
                 "nvim-lua/plenary.nvim",
                 "stevearc/dressing.nvim" -- optional for vim.ui.select
-            }
+            },
+            config = function()
+                require("jaron.plugins.flutter-tools")
+            end
         }
         -- orgmode to organize yo brain
-        -- get autocomplete working
         use {
-            "nvim-orgmode/orgmode"
+            "nvim-orgmode/orgmode",
+            config = function()
+                require("jaron.plugins.orgmode")
+            end
         }
-        -- not really needed 99% of the time
+        -- goto preview to preview your gotos
+        use {
+            "rmagatti/goto-preview",
+            config = function()
+                require("jaron.plugins.goto-preview")
+            end
+        }
+        -- surround your shit
+        use(
+            {
+                "kylechui/nvim-surround",
+                tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+                config = function()
+                    require("nvim-surround").setup({})
+                end
+            }
+        )
+        -- mark it
+        use {
+            "chentoast/marks.nvim",
+            config = function()
+                require("marks").setup {}
+            end
+        }
+
+        -- timer for creating reminders and stuff
+        use {
+            "alex-popov-tech/timer.nvim",
+            config = function()
+                require("jaron.plugins.timer")
+            end
+        }
+        -- nofitier thing
+        use {
+            "rcarriga/nvim-notify",
+            config = function()
+                require("jaron.plugins.notify")
+            end
+        }
+        -- dev docs
+        use {
+            "luckasRanarison/nvim-devdocs",
+            requires = {
+                "nvim-lua/plenary.nvim",
+                "nvim-telescope/telescope.nvim",
+                "nvim-treesitter/nvim-treesitter"
+            },
+            config = function()
+                require("nvim-devdocs").setup({})
+            end
+        }
+        use {
+            "abecodes/tabout.nvim",
+            config = function()
+                --     require("tabout").setup {
+                --         tabkey = "<Tab>", -- key to trigger tabout, set to an empty string to disable
+                --         backwards_tabkey = "<S-Tab>", -- key to trigger backwards tabout, set to an empty string to disable
+                --         act_as_tab = true, -- shift content if tab out is not possible
+                --         act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
+                --         default_tab = "<C-t>", -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
+                --         default_shift_tab = "<C-d>", -- reverse shift default action,
+                --         enable_backwards = true, -- well ...
+                --         completion = true, -- if the tabkey is used in a completion pum
+                --         tabouts = {
+                --             {open = "'", close = "'"},
+                --             {open = '"', close = '"'},
+                --             {open = "`", close = "`"},
+                --             {open = "(", close = ")"},
+                --             {open = "[", close = "]"},
+                --             {open = "{", close = "}"}
+                --         },
+                --         ignore_beginning = true --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]],
+                --         exclude = {} -- tabout will ignore these filetypes
+                --     }
+                require("jaron.plugins.tabout")
+            end,
+            wants = {"nvim-treesitter"}, -- or require if not used so far
+            after = {"nvim-cmp"} -- if a completion plugin is using tabs load it before
+        }
+
+        -- <| ~~~ PLUGINS  IM EXPERIMENTING WITH ~~~ |>
+        --
+        use {
+            "m4xshen/hardtime.nvim",
+            requires = {"nvim-lua/plenary.nvim"},
+            -- requires = {"MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim"},
+            config = function()
+                require("hardtime").setup({})
+            end
+        }
+
+        -- -- not really needed 99% of the time
         -- use {
         --     "cameron-wags/rainbow_csv.nvim",
         --     config = function()
@@ -154,82 +302,5 @@ return require("packer").startup(
         --         "rfc_semicolon"
         --     }
         -- }
-        -- Go to preview -- dunno if i need this
-        use {
-            "rmagatti/goto-preview"
-        }
-        -- surround because surrounding is cool
-        use(
-            {
-                "kylechui/nvim-surround",
-                tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-                config = function()
-                    require("nvim-surround").setup({})
-                end
-            }
-        )
-        use {
-            "chentoast/marks.nvim",
-            config = function()
-                require("marks").setup {}
-            end
-        }
-        -- <| ~~~ PLUGINS  IM EXPERIMENTING WITH ~~~ |>
-
-        -- timer for creating reminders and stuff
-        use {"alex-popov-tech/timer.nvim"}
-        -- nofitier thing
-        use {"rcarriga/nvim-notify"}
-
-        -- dev docs
-        -- use {
-        --     "luckasRanarison/nvim-devdocs",
-        --     requires = {
-        --         "nvim-lua/plenary.nvim",
-        --         "nvim-telescope/telescope.nvim",
-        --         "nvim-treesitter/nvim-treesitter"
-        --     },
-        --     config = function()
-        --         require("nvim-devdocs").setup({})
-        --     end
-        -- }
-
-        -- tabout TODO make it work
-        use {
-            "abecodes/tabout.nvim",
-            config = function()
-                require("tabout").setup {
-                    tabkey = "<Tab>", -- key to trigger tabout, set to an empty string to disable
-                    backwards_tabkey = "<S-Tab>", -- key to trigger backwards tabout, set to an empty string to disable
-                    act_as_tab = true, -- shift content if tab out is not possible
-                    act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
-                    default_tab = "<C-t>", -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
-                    default_shift_tab = "<C-d>", -- reverse shift default action,
-                    enable_backwards = true, -- well ...
-                    completion = true, -- if the tabkey is used in a completion pum
-                    tabouts = {
-                        {open = "'", close = "'"},
-                        {open = '"', close = '"'},
-                        {open = "`", close = "`"},
-                        {open = "(", close = ")"},
-                        {open = "[", close = "]"},
-                        {open = "{", close = "}"}
-                    },
-                    ignore_beginning = true --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]],
-                    exclude = {} -- tabout will ignore these filetypes
-                }
-            end,
-            wants = {"nvim-treesitter"}, -- or require if not used so far
-            after = {"nvim-cmp"} -- if a completion plugin is using tabs load it before
-        }
-
-        use {
-            "nvim-telescope/telescope-file-browser.nvim",
-            requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"}
-        }
-
-        use {
-            "nvim-telescope/telescope-ui-select.nvim"
-        }
     end
 )

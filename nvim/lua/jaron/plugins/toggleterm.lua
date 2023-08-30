@@ -2,7 +2,7 @@ Map = vim.api.nvim_set_keymap
 Opts = {noremap = true, silent = true}
 
 require("toggleterm").setup {
-    size = 5,
+    size = 15,
     open_mapping = [[<c-\>]],
     shade_filetypes = {},
     shade_terminals = true,

@@ -1,4 +1,4 @@
-vim.cmd [[highlight IndentBlankLineContextChar guibg=#9763C1 gui=nocombine]]
+vim.cmd [[highlight IndentBlankLineContextChar guibg=#af87af gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent1 guibg=#2F2736 gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent2 guibg=#352E3F gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent3 guibg=#42374B gui=nocombine]]
@@ -19,5 +19,6 @@ require("indent_blankline").setup {
         "IndentBlanklineIndent2",
         "IndentBlanklineIndent3"
     },
-    show_trailing_blankline_indent = false
+    show_trailing_blankline_indent = false,
+    show_end_of_line = false
 }

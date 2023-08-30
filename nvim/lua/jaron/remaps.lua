@@ -1,7 +1,7 @@
-require("jaron.utils")
-
 -- set leader to space
 vim.g.mapleader = " "
+
+local map = vim.keymap.set
 
 local opts = {noremap = true, silent = true}
 
@@ -18,25 +18,27 @@ local cmdFunc = function(cmd)
 end
 
 -- keep cursor centered while jumping half pages
-NMap("<C-d>", "<C-d>zz")
-NMap("<C-u>", "<C-u>zz")
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
 
 -- delete line without yanking
-NMap(leaderMap("d"), '"_d')
-VMap(leaderMap("d"), '"_d')
+map({"n", "v"}, leaderMap("d"), '"_d')
 
 -- "+yy "+p copy/paste sys board
-VMap(leaderMap("yy"), '"+y', optsFunc("Copy to system clipboard"))
-NMap(leaderMap("pp"), '"+p', optsFunc("Paste from system clipboard"))
-VMap(leaderMap("pp"), '"+p', optsFunc("Paste from system clipboard"))
+map({"n", "v"}, "<leader>yy", '"+y', optsFunc("Copy to system clipboard - Normal | Visual"))
+map({"n", "v"}, "<leader>pp", '"+p', optsFunc("Paste from system clipboard - Normal | Visual"))
 
 -- set esc to jk
-AllMap("jk", "<ESC>", optsFunc("Set jk to escape"))
+map({"i", "v", "n"}, "jk", "<ESC>", optsFunc("Set jk to escape"))
+
+-- set esc to kj
+map({"i", "v", "n"}, "kj", "<ESC>", optsFunc("Set kj to escape"))
 
 -- quick commands
-NMap(leaderMap("sp"), cmdFunc("PackerSync"))
+map("n", "<leader>sp", "<cmd> lua PackerSync<CR>", optsFunc("Sync packer"))
 
-NMap(
+map(
+    "n",
     "<leader><leader>",
     function()
         vim.cmd("so ~/.config/nvim/init.lua")
@@ -44,7 +46,8 @@ NMap(
     end,
     optsFunc("Source the fucker")
 )
-NMap(
+map(
+    "n",
     leaderMap("so"),
     function()
         vim.cmd("so %")
@@ -54,60 +57,49 @@ NMap(
 )
 
 -- Move to previous/next
-NMap(leaderMap("th"), cmdFunc("BufferPrevious"), optsFunc("Go to the next fuckin buffer tab"))
-NMap(leaderMap("tl"), cmdFunc("BufferNext"), optsFunc("Go to the previous fuckin buffer tab"))
+map("n", leaderMap("th"), cmdFunc("BufferPrevious"), optsFunc("Go to the next fuckin buffer tab"))
+map("n", leaderMap("tl"), cmdFunc("BufferNext"), optsFunc("Go to the previous fuckin buffer tab"))
 
 -- Go to buffer in position <num>
 for bufNum = 1, 9 do
-    NMap(
+    map(
+        "n",
         leaderMap("b" .. bufNum),
         cmdFunc("BufferGoto " .. bufNum),
         optsFunc("Go to the buffer tab in position " .. bufNum)
     )
 end
 
-NMap(leaderMap("b0"), cmdFunc("BufferLast"), opts)
-NMap(leaderMap("bx"), cmdFunc("BufferClose"), opts)
+map("n", leaderMap("b0"), cmdFunc("BufferLast"), opts)
+map("n", leaderMap("bx"), cmdFunc("BufferClose"), opts)
 
 -- trigger code action
 -- Better mapping -- typing '<x> catato...' triggers comp prompt
-NMap(leaderMap("ca"), cmdFunc("lua vim.lsp.buf.code_action()"), opts)
+map("n", leaderMap("ca"), cmdFunc("lua vim.lsp.buf.code_action()"), opts)
 
 -- Show file diff
-NMap(leaderMap("w"), cmdFunc("w !diff % -"), optsFunc("Display file diff"))
+map("n", leaderMap("w"), cmdFunc("w !diff % -"), optsFunc("Display file diff"))
 
 -- write maps for multi window editing
-NMap(leaderMap("hs"), cmdFunc("sp"), optsFunc("Split horizontal"))
-NMap(leaderMap("vs"), cmdFunc("vs"), optsFunc("Split vertical"))
+map("n", leaderMap("hs"), cmdFunc("sp"), optsFunc("Split horizontal"))
+map("n", leaderMap("vs"), cmdFunc("vs"), optsFunc("Split vertical"))
 
 -- tmux navigation
-NMap("<C-h>", cmdFunc("TmuxNavigateLeft"), optsFunc("Go to left window"))
-NMap("<C-j>", cmdFunc("TmuxNavigateDown"), optsFunc("Go to bottom window"))
-NMap("<C-k>", cmdFunc("TmuxNavigateUp"), optsFunc("Go to top window"))
-NMap("<C-l>", cmdFunc("TmuxNavigateRight"), optsFunc("Go to right window"))
+map("n", "<C-h>", cmdFunc("TmuxNavigateLeft"), optsFunc("Go to left window"))
+map("n", "<C-j>", cmdFunc("TmuxNavigateDown"), optsFunc("Go to bottom window"))
+map("n", "<C-k>", cmdFunc("TmuxNavigateUp"), optsFunc("Go to top window"))
+map("n", "<C-l>", cmdFunc("TmuxNavigateRight"), optsFunc("Go to right window"))
 
 -- lsp diagnostic shit
-NMap(
+map(
+    "n",
     leaderMap("er"),
     cmdFunc("lua vim.diagnostic.open_float()"),
     optsFunc("Open floating diagnostic window for warnings/errors")
 )
 
 -- copies file path of current buffer to clipboard
-NMap(leaderMap("cfp"), cmdFunc("redir @* | echo @%"), optsFunc("Copy path of current file to system clipboard"))
+map("n", leaderMap("cfp"), cmdFunc("redir @* | echo @%"), optsFunc("Copy path of current file to system clipboard"))
 
--- changes theme
-NMap(
-    leaderMap("kd"),
-    function()
-        vim.cmd("colorscheme kanagawa-dragon")
-    end,
-    optsFunc("Dragon mode for eyeball soothing darkness")
-)
-NMap(
-    leaderMap("kw"),
-    function()
-        vim.cmd("colorscheme kanagawa")
-    end,
-    optsFunc("Og kanagawa goodness")
-)
+-- Fumpt
+map("n", "<leader>f", "<cmd>Format<CR>", {noremap = true, silent = true})

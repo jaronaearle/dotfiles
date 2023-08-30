@@ -1,15 +1,15 @@
 local vopt = vim.opt
 
-vopt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr-o:hor20"
+--vopt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr-o:hor20"
 
 -- line numbers
 vopt.number = true
 vopt.relativenumber = false
 vopt.cursorline = true
 
-vopt.tabstop = 4
-vopt.softtabstop = 4
-vopt.shiftwidth = 4
+vopt.tabstop = 2
+vopt.softtabstop = 2
+vopt.shiftwidth = 2
 vopt.expandtab = true
 vopt.smarttab = true
 vopt.smartindent = true
@@ -29,7 +29,7 @@ vopt.signcolumn = "yes"
 vopt.isfname:append("@-@")
 
 vopt.updatetime = 50
-vopt.colorcolumn = "120"
+vopt.colorcolumn = "180"
 
 -- auto write when focus changes
 vopt.autowriteall = true
@@ -44,7 +44,7 @@ vopt.spell = true
 vopt.spelllang = {"en_us"}
 
 vim.cmd("set noshowmode")
-vim.cmd("colorscheme kanagawa")
+vim.cmd("colorscheme kanagawa-dragon")
 
 vim.o.autoread = true
 
@@ -54,4 +54,3 @@ vim.o.autoread = true
 --         command = "if mode() != 'c' | checktime | endif",
 --         pattern = {"*"}
 --     }
--- )

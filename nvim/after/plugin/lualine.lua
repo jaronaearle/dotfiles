@@ -6,7 +6,6 @@ require("lualine").setup(
     {
         options = {
             theme = "kanagawa"
-            --theme = "modus-vivendi"
         },
         icons_enabled = true,
         sections = {
