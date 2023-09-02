@@ -61,19 +61,39 @@ local function grep_notes()
 end
 
 local function mark()
-    builtin.marks()
+    builtin.marks(
+        {
+            prompt_title = "< Mark List > ",
+            initial_mode = "normal"
+        }
+    )
 end
 
 local function registers()
-    builtin.registers()
+    builtin.registers(
+        {
+            prompt_title = "< Register List > ",
+            initial_mode = "normal"
+        }
+    )
 end
 
 local function quicklist()
-    builtin.quickfix()
+    builtin.quickfix(
+        {
+            prompt_title = "< Quickfix List> ",
+            initial_mode = "normal"
+        }
+    )
 end
 
 local function jumplist()
-    builtin.jumplist()
+    builtin.jumplist(
+        {
+            prompt_title = "< Jump List > ",
+            initial_mode = "normal"
+        }
+    )
 end
 
 local function tags()
@@ -126,9 +146,6 @@ telescope.setup(
                 anchor = "NW",
                 prompt_position = "top",
                 preview_cutoff = 90,
-                --preview_width = 0.7,
-                -- width = 0.99,
-                -- height = .99,
                 center = {
                     width = 0.99,
                     height = 0.4
@@ -149,8 +166,6 @@ telescope.setup(
                 "package-lock.json",
                 ".git",
                 ".DS_Store"
-                -- "ios",
-                -- "android"
             }
         },
         extensions = {
@@ -171,7 +186,6 @@ telescope.setup(
                         height = 0.13
                     }
                 },
-                --theme = "cursor",
                 codeactions = true
             }
         }
