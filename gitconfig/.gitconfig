@@ -1,0 +1,93 @@
+[user]
+	name = jaronaearle
+	email = jaronaearle@gmail.com
+
+[alias]
+	a = add
+	aa = add .
+	st = status
+	br = branch
+	cb = checkout -b
+	co = checkout
+	c = commit
+	cm = commit -m
+	cam = commit --amend
+	can = commit --amend --no-edit
+	ps = push
+	pf = push -f
+	pl = pull
+	pr = pull --rebase
+	mg = merge
+	df = diff
+	fc = fetch
+	sup = push --set-upstream origin
+	sh = stash
+	sp = stash pop
+	rb = rebase
+	rbc = rebase --continue
+	rba = rebase --abort
+	tree = log --decorate --oneline --graph --all
+	undo = reset --hard HEAD~1
+	wa = worktree add
+	wr = worktree remove
+	wl = worktree list
+	wt-clone = "!sh $HOME/Code/shell/shell-fish-allergy/scripts/worktree-clone-bare.sh"
+	rsu = remote set-url origin
+	rv = remote -v
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    features = doom-jar
+    side-by-side = true
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
+[delta "doom-jar"]
+    #author: https://github.com/jaronaearle
+    dark = true
+    line-numbers = true
+    side-by-side = true
+    keep-plus-minus-markers = false
+    syntax-theme = OneHalfDark
+    file-style = "#b2b2b2" bold
+    file-decoration-style = "#b2b2b2" ul
+    file-added-label = [+]
+    file-copied-label = [c]
+    file-modified-label = [m]
+    file-removed-label = [-]
+    file-renamed-label = [r]
+    hunk-header-style = omit
+    line-numbers-left-format = " {nm:>3} │"
+    line-numbers-left-style = "#af5f5f"
+    line-numbers-right-format = " {np:>3} │"
+    line-numbers-right-style = "#5f875f"
+    line-numbers-minus-style = "#af5f5f" italic black
+    line-numbers-plus-style = "#5f875f" italic black
+    line-numbers-zero-style = "#c0c0c0" italic
+    minus-style = "#af5f5f"
+    minus-emph-style = bold "#202020" "#d75f5f"
+    minus-non-emph-style = bold
+    plus-style = "#5f875f"
+    plus-emph-style = bold "#202020" "#5f875f"
+    plus-non-emph-style = bold
+    zero-style = syntax
+    blame-code-style = syntax
+    blame-format = "{author:<18} ({commit:>9}) {timestamp:^16}"
+    blame-palette = "#2E3440" "#3B4252" "#b2b2b2" "#4C566A"
+    merge-conflict-begin-symbol = "<<<"
+    merge-conflict-end-symbol = ">>>"
+    merge-conflict-ours-diff-header-style = "#F1FA8C" bold
+    merge-conflict-ours-diff-header-decoration-style = "#b2b2b2" box
+    merge-conflict-theirs-diff-header-style = "#F1FA8C" bold
+    merge-conflict-theirs-diff-header-decoration-style = "#b2b2b2" box
