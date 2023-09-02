@@ -48,7 +48,7 @@ function battery_status() {
 }
 
 function date_time() {
-    printf "%s " "$(date +'%Y-%m-%d %H:%M:%S %Z')"
+    printf "%s " "$(date +'%Y-%m-%d %H:%M %Z')"
 }
 
 function spacer() {
