@@ -2,6 +2,9 @@
 	name = jaronaearle
 	email = jaronaearle@gmail.com
 
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+
 [alias]
 	a = add
 	aa = add .
