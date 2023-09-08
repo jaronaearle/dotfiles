@@ -22,3 +22,5 @@ require("indent_blankline").setup {
     show_trailing_blankline_indent = false,
     show_end_of_line = false
 }
+
+show_trailing_blankine_indent = "test;"

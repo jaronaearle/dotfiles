@@ -48,9 +48,8 @@ vim.cmd("colorscheme kanagawa-dragon")
 
 vim.o.autoread = true
 
--- vim.api.nvim_create_autocmd(
---     {"BufEnter", "CursorHold", "CursorHoldI", "FocusGained"},
---     {
---         command = "if mode() != 'c' | checktime | endif",
---         pattern = {"*"}
---     }
+-- suppress checkhealth warning for shit i dont care about
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_julia_provider = 0
+vim.g.loaded_php_provider = 0

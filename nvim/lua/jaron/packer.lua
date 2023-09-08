@@ -31,8 +31,17 @@ return require("packer").startup(
                 "nvimdev/lspsaga.nvim",
                 after = "nvim-lspconfig",
                 config = function()
-                    require("lspsaga").setup({})
+                    require("jaron.plugins.lsp-saga")
                 end
+            }
+        )
+        use(
+            {
+                "jose-elias-alvarez/null-ls.nvim",
+                config = function()
+                    require("jaron.plugins.null-ls")
+                end,
+                requires = {"nvim-lua/plenary.nvim"}
             }
         )
         -- session mananager
@@ -214,7 +223,6 @@ return require("packer").startup(
                 require("marks").setup {}
             end
         }
-
         -- timer for creating reminders and stuff
         use {
             "alex-popov-tech/timer.nvim",
@@ -244,30 +252,22 @@ return require("packer").startup(
         use {
             "abecodes/tabout.nvim",
             config = function()
-                --     require("tabout").setup {
-                --         tabkey = "<Tab>", -- key to trigger tabout, set to an empty string to disable
-                --         backwards_tabkey = "<S-Tab>", -- key to trigger backwards tabout, set to an empty string to disable
-                --         act_as_tab = true, -- shift content if tab out is not possible
-                --         act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
-                --         default_tab = "<C-t>", -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
-                --         default_shift_tab = "<C-d>", -- reverse shift default action,
-                --         enable_backwards = true, -- well ...
-                --         completion = true, -- if the tabkey is used in a completion pum
-                --         tabouts = {
-                --             {open = "'", close = "'"},
-                --             {open = '"', close = '"'},
-                --             {open = "`", close = "`"},
-                --             {open = "(", close = ")"},
-                --             {open = "[", close = "]"},
-                --             {open = "{", close = "}"}
-                --         },
-                --         ignore_beginning = true --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]],
-                --         exclude = {} -- tabout will ignore these filetypes
-                --     }
                 require("jaron.plugins.tabout")
             end,
             wants = {"nvim-treesitter"}, -- or require if not used so far
             after = {"nvim-cmp"} -- if a completion plugin is using tabs load it before
+        }
+        use {
+            "tzachar/highlight-undo.nvim",
+            config = function()
+                require("jaron.plugins.highlight-undo")
+            end
+        }
+        use {
+            "tzachar/local-highlight.nvim",
+            config = function()
+                require("jaron.plugins.highlight-local")
+            end
         }
 
         -- <| ~~~ PLUGINS  IM EXPERIMENTING WITH ~~~ |>
@@ -275,9 +275,12 @@ return require("packer").startup(
         use {
             "m4xshen/hardtime.nvim",
             requires = {"nvim-lua/plenary.nvim"},
-            -- requires = {"MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim"},
             config = function()
-                require("hardtime").setup({})
+                require("hardtime").setup(
+                    {
+                        disabled_filetypes = {"NvimTree", "mason", "org", "telescope", "qf"}
+                    }
+                )
             end
         }
 
