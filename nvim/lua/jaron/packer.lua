@@ -48,11 +48,6 @@ return require("packer").startup(
         use {
             "rmagatti/auto-session",
             config = function()
-                --     require("auto-session").setup {
-                --         log_level = "error",
-                --         auto_session_suppress_dirs = {"~/", "~/Projects", "~/Downloads", "/"}
-                --     }
-                -- end
                 require("jaron.plugins.auto-session")
             end
         }
@@ -158,7 +153,7 @@ return require("packer").startup(
         -- These optional plugins should be loaded directly because of a bug in Packer lazy loading
         use "nvim-tree/nvim-web-devicons" -- OPTIONAL: for file icons
         use "lewis6991/gitsigns.nvim" -- OPTIONAL: for git status
-        use "romgrk/barbar.nvim"
+        use("romgrk/barbar.nvim")
         -- whichkey
         use {
             "folke/which-key.nvim",

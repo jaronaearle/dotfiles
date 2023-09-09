@@ -7,7 +7,8 @@ lsp.on_attach(
     end
 )
 
-lsp.setup_servers({"tsserver", "eslint", "gopls", "rust_analyzer"})
+lsp.setup_servers({"tsserver", "eslint", "gopls", "rust_analyzer", "Lua"})
+
 lsp.setup_servers({"dartls", force = true})
 
 lsp.setup()

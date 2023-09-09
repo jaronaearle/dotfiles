@@ -13,9 +13,7 @@ require("lualine").setup(
             lualine_b = {"branch"},
             lualine_c = {getPath},
             lualine_x = {"searchcount", "fileformat", "filetype"},
-            --lualine_y = {"progress"},
             lualine_y = {"location"},
-            --lualine_z = {"location"}
             lualine_z = {(require("auto-session.lib").current_session_name)}
         },
         tabline = {},

@@ -40,8 +40,8 @@ vopt.ignorecase = true
 vopt.smartcase = true
 
 -- exp
-vopt.spell = true
-vopt.spelllang = {"en_us"}
+vim.cmd("set spell")
+vim.cmd("set spelllang=en_us")
 
 vim.cmd("set noshowmode")
 vim.cmd("colorscheme kanagawa-dragon")
@@ -50,6 +50,19 @@ vim.o.autoread = true
 
 -- suppress checkhealth warning for shit i dont care about
 vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_julia_provider = 0
 vim.g.loaded_php_provider = 0
+
+local signs = {
+    Error = "", -- 
+    Warn = "",
+    Hint = "",
+    Info = ""
+}
+
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
+end
