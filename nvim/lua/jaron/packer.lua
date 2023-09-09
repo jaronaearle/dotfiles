@@ -187,6 +187,13 @@ return require("packer").startup(
                 require("jaron.plugins.flutter-tools")
             end
         }
+        -- go go go
+        use {
+            "ray-x/go.nvim",
+            config = function()
+                require("jaron.plugins.golang")
+            end
+        }
         -- orgmode to organize yo brain
         use {
             "nvim-orgmode/orgmode",
