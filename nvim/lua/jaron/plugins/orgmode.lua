@@ -1,6 +1,7 @@
 require("orgmode").setup_ts_grammar()
 
-local org_dir = "~/Sync/Org/"
+local org_dir = "~/Sync/Org/new/"
+-- local org_dir = "~/Sync/Org/"
 
 require("orgmode").setup(
     {
@@ -16,47 +17,65 @@ require("orgmode").setup(
         org_agenda_span = "day",
         org_agenda_files = {org_dir .. "*"},
         org_agenda_skip_deadline_if_done = false,
+        org_deadline_warning_days = 3,
         org_default_notes_file = org_dir .. "refile.org",
         org_capture_templates = {
             j = {
                 description = "Journal",
-                template = '* %(return vim.fn.getreg "w")',
-                -- get the content of register "w"
+                template = "** Entry %U\n\t%?",
                 target = org_dir .. "journal.org"
+            },
+            t = {
+                description = "Todo",
+                template = "** TODO [#B] %? :< tag >:\nSCHEDULED: %t\nDEADLINE: < deadline >%u\n",
+                target = org_dir .. "todo.org"
+            },
+            r = {
+                description = "Refile",
+                template = "** %?\n %u\n",
+                target = org_dir .. "refile.org"
+            },
+            w = {
+                description = "Work",
+                template = "** %?\n %u\n",
+                target = org_dir .. "work.org"
             }
         },
         mappings = {
             org = {
                 org_toggle_checkbox = "<leader>oC"
             }
+        },
+        ui = {
+            menu = {
+                handler = function(data)
+                    local options = {}
+                    local options_by_label = {}
+
+                    for _, item in ipairs(data.items) do
+                        if item.key and item.label:lower() ~= "quit" then
+                            table.insert(options, item.label)
+                            options_by_label[item.label] = item
+                        end
+                    end
+
+                    local handler = function(choice)
+                        if not choice then
+                            return
+                        end
+
+                        local option = options_by_label[choice]
+                        if option.action then
+                            option.action()
+                        end
+                    end
+
+                    vim.ui.select(options, {prompt = data.prompt}, handler)
+                end
+            }
         }
-        -- ui = {
-        --     menu = {
-        --         handler = function(data)
-        --             local options = {}
-        --             local options_by_label = {}
-        --
-        --             for _, item in ipairs(data.items) do
-        --                 if item.key and item.label:lower() ~= "quit" then
-        --                     table.insert(options, item.label)
-        --                     options_by_label[item.label] = item
-        --                 end
-        --             end
-        --
-        --             local handler = function(choice)
-        --                 if not choice then
-        --                     return
-        --                 end
-        --
-        --                 local option = options_by_label[choice]
-        --                 if option.action then
-        --                     option.action()
-        --                 end
-        --             end
-        --
-        --             vim.ui.select(options, {prompt = data.prompt}, handler)
-        --         end
-        --     }
-        -- }
     }
 )
+
+-- Could be useful to get the content of some reg and push into org
+-- template = '* Entry %U\n %(return vim.fn.getreg "w")',
