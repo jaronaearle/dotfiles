@@ -271,41 +271,19 @@ return require("packer").startup(
                 require("jaron.plugins.highlight-local")
             end
         }
-
-        -- <| ~~~ PLUGINS  IM EXPERIMENTING WITH ~~~ |>
-        --
         use {
             "m4xshen/hardtime.nvim",
             requires = {"nvim-lua/plenary.nvim"},
             config = function()
-                require("hardtime").setup(
-                    {
-                        disabled_filetypes = {"NvimTree", "mason", "org", "telescope", "qf"}
-                    }
-                )
+                require("jaron.plugins.hardtime")
             end
         }
-
-        -- -- not really needed 99% of the time
-        -- use {
-        --     "cameron-wags/rainbow_csv.nvim",
-        --     config = function()
-        --         require "rainbow_csv".setup()
-        --     end,
-        --     -- optional lazy-loading below
-        --     module = {
-        --         "rainbow_csv",
-        --         "rainbow_csv.fns"
-        --     },
-        --     ft = {
-        --         "csv",
-        --         "tsv",
-        --         "csv_semicolon",
-        --         "csv_whitespace",
-        --         "csv_pipe",
-        --         "rfc_csv",
-        --         "rfc_semicolon"
-        --     }
-        -- }
+        -- <| ~~~ PLUGINS  IM EXPERIMENTING WITH ~~~ |>
+        use {
+            "mhinz/vim-startify",
+            config = function()
+                require("startify").setup()
+            end
+        }
     end
 )

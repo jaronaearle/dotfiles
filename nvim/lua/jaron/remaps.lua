@@ -34,6 +34,8 @@ map({"i", "v", "n"}, "jk", "<ESC>", optsFunc("Set jk to escape"))
 -- set esc to kj
 map({"i", "v", "n"}, "kj", "<ESC>", optsFunc("Set kj to escape"))
 
+map("n", "<S-u>", "<C-r>", optsFunc(""))
+
 -- quick commands
 map("n", "<leader>sp", "<cmd> lua PackerSync<CR>", optsFunc("Sync packer"))
 
@@ -57,8 +59,8 @@ map(
 )
 
 -- Move to previous/next
-map("n", leaderMap("th"), cmdFunc("BufferPrevious"), optsFunc("Go to the next fuckin buffer tab"))
-map("n", leaderMap("tl"), cmdFunc("BufferNext"), optsFunc("Go to the previous fuckin buffer tab"))
+map("n", "<S-q>", cmdFunc("BufferPrevious"), optsFunc("Go to the next fuckin buffer tab"))
+map("n", "<S-w>", cmdFunc("BufferNext"), optsFunc("Go to the previous fuckin buffer tab"))
 
 -- Go to buffer in position <num>
 for bufNum = 1, 9 do
@@ -71,7 +73,7 @@ for bufNum = 1, 9 do
 end
 
 map("n", leaderMap("b0"), cmdFunc("BufferLast"), opts)
-map("n", leaderMap("bx"), cmdFunc("BufferClose"), opts)
+map("n", "<S-x>", cmdFunc("BufferClose"), opts)
 
 -- trigger code action
 -- Better mapping -- typing '<x> catato...' triggers comp prompt
