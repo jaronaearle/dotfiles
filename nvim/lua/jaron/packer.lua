@@ -109,14 +109,45 @@ return require("packer").startup(
                 require("jaron.plugins.formatter")
             end
         }
-        -- copilot
+        -- codeium
         use {
-            "zbirenbaum/copilot.lua",
+            "Exafunction/codeium.vim",
             config = function()
-                require("jaron.plugins.copilot")
+                -- Change '<C-g>' here to any keycode you like.
+                vim.keymap.set(
+                    "i",
+                    "<C-g>",
+                    function()
+                        return vim.fn["codeium#Accept"]()
+                    end,
+                    {expr = true}
+                )
+                vim.keymap.set(
+                    "i",
+                    "<c-;>",
+                    function()
+                        return vim.fn["codeium#CycleCompletions"](1)
+                    end,
+                    {expr = true}
+                )
+                vim.keymap.set(
+                    "i",
+                    "<c-,>",
+                    function()
+                        return vim.fn["codeium#CycleCompletions"](-1)
+                    end,
+                    {expr = true}
+                )
+                vim.keymap.set(
+                    "i",
+                    "<c-x>",
+                    function()
+                        return vim.fn["codeium#Clear"]()
+                    end,
+                    {expr = true}
+                )
             end
         }
-        -- toggle comments
         use {
             "numToStr/Comment.nvim",
             config = function()
@@ -280,10 +311,7 @@ return require("packer").startup(
         }
         -- <| ~~~ PLUGINS  IM EXPERIMENTING WITH ~~~ |>
         use {
-            "mhinz/vim-startify",
-            config = function()
-                require("startify").setup()
-            end
+            "mhinz/vim-startify"
         }
     end
 )
