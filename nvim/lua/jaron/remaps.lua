@@ -85,6 +85,7 @@ map("n", leaderMap("w"), cmdFunc("w !diff % -"), optsFunc("Display file diff"))
 -- write maps for multi window editing
 map("n", leaderMap("hs"), cmdFunc("sp"), optsFunc("Split horizontal"))
 map("n", leaderMap("vs"), cmdFunc("vs"), optsFunc("Split vertical"))
+map("n", leaderMap("wl"), "<C-w><S-l>", optsFunc("Go to left window"))
 
 -- tmux navigation
 map("n", "<C-h>", cmdFunc("TmuxNavigateLeft"), optsFunc("Go to left window"))
