@@ -7,7 +7,7 @@ lsp.on_attach(
     end
 )
 
-lsp.setup_servers({"tsserver", "eslint", "gopls", "rust_analyzer", "lua-language-server"})
+lsp.setup_servers({"tsserver", "eslint", "gopls", "rust_analyzer", "lua_ls"})
 
 lsp.setup_servers({"dartls", force = true})
 
@@ -15,7 +15,7 @@ lsp.setup()
 
 --Fix Undefined global 'vim'
 lsp.configure(
-    "lua-language-server",
+    "lua_ls",
     {
         settings = {
             Lua = {
