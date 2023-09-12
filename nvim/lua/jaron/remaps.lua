@@ -105,3 +105,4 @@ map("n", leaderMap("cfp"), cmdFunc("redir @* | echo @%"), optsFunc("Copy path of
 
 -- Fumpt
 map("n", "<leader>f", "<cmd>Format<CR>", {noremap = true, silent = true})
+map("n", leaderMap("yz"), cmdFunc("'y,'zd<CR>"), optsFunc("Delete text between marks y and z"))
