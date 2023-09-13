@@ -35,6 +35,20 @@ return require("packer").startup(
                 end
             }
         )
+        -- use {
+        --     "goolord/alpha-nvim",
+        --     requires = {"nvim-tree/nvim-web-devicons"},
+        --     config = function()
+        --         require("jaron.plugins.alpha")
+        --     end
+        -- }
+        use {
+            "goolord/alpha-nvim",
+            config = function()
+                -- require "alpha".setup(require "alpha.themes.dashboard".config)
+                require("jaron.plugins.alpha")
+            end
+        }
         use(
             {
                 "jose-elias-alvarez/null-ls.nvim",
@@ -310,8 +324,8 @@ return require("packer").startup(
             end
         }
         -- <| ~~~ PLUGINS  IM EXPERIMENTING WITH ~~~ |>
-        use {
-            "mhinz/vim-startify"
-        }
+        -- use {
+        --     "mhinz/vim-startify"
+        -- }
     end
 )
