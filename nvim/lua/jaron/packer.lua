@@ -35,13 +35,7 @@ return require("packer").startup(
                 end
             }
         )
-        -- use {
-        --     "goolord/alpha-nvim",
-        --     requires = {"nvim-tree/nvim-web-devicons"},
-        --     config = function()
-        --         require("jaron.plugins.alpha")
-        --     end
-        -- }
+        -- alpha startup
         use {
             "goolord/alpha-nvim",
             config = function()
@@ -127,10 +121,9 @@ return require("packer").startup(
         use {
             "Exafunction/codeium.vim",
             config = function()
-                -- Change '<C-g>' here to any keycode you like.
                 vim.keymap.set(
                     "i",
-                    "<C-g>",
+                    "<leader>k>",
                     function()
                         return vim.fn["codeium#Accept"]()
                     end,
@@ -138,7 +131,7 @@ return require("packer").startup(
                 )
                 vim.keymap.set(
                     "i",
-                    "<c-;>",
+                    "<leader>l",
                     function()
                         return vim.fn["codeium#CycleCompletions"](1)
                     end,
@@ -146,7 +139,7 @@ return require("packer").startup(
                 )
                 vim.keymap.set(
                     "i",
-                    "<c-,>",
+                    "<leader>h>",
                     function()
                         return vim.fn["codeium#CycleCompletions"](-1)
                     end,
@@ -154,12 +147,13 @@ return require("packer").startup(
                 )
                 vim.keymap.set(
                     "i",
-                    "<c-x>",
+                    "<leader>j",
                     function()
                         return vim.fn["codeium#Clear"]()
                     end,
                     {expr = true}
                 )
+                vim.g.codeium_no_map_tab = 1
             end
         }
         use {
@@ -324,8 +318,8 @@ return require("packer").startup(
             end
         }
         -- <| ~~~ PLUGINS  IM EXPERIMENTING WITH ~~~ |>
-        -- use {
-        --     "mhinz/vim-startify"
-        -- }
+        use {
+            "famiu/bufdelete.nvim"
+        }
     end
 )

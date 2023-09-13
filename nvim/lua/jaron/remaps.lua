@@ -73,7 +73,8 @@ for bufNum = 1, 9 do
 end
 
 map("n", leaderMap("b0"), cmdFunc("BufferLast"), opts)
-map("n", "<S-x>", cmdFunc("BufferClose"), opts)
+map("n", "<S-x>", cmdFunc("Bdelete"), opts)
+-- map("n", "<S-x>", cmdFunc("BufferClose"), opts)
 
 -- trigger code action
 -- Better mapping -- typing '<x> catato...' triggers comp prompt
