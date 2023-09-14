@@ -9,7 +9,6 @@ require("barbar").setup(
         highlight_visible = true,
         hide = {extensions = true},
         minumum_padding = 3,
-        -- maximum_padding = 1,
         maximum_length = 20,
         icons = {
             buffer_index = true,

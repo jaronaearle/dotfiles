@@ -25,6 +25,16 @@ return require("packer").startup(
                 {"L3MON4D3/LuaSnip"} -- Required
             }
         }
+        -- snip snip
+        use(
+            {
+                "L3MON4D3/LuaSnip",
+                -- follow latest release.
+                tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+                -- install jsregexp (optional!:).
+                run = "make install_jsregexp"
+            }
+        )
         -- lsp saga
         use(
             {
@@ -39,19 +49,9 @@ return require("packer").startup(
         use {
             "goolord/alpha-nvim",
             config = function()
-                -- require "alpha".setup(require "alpha.themes.dashboard".config)
                 require("jaron.plugins.alpha")
             end
         }
-        use(
-            {
-                "jose-elias-alvarez/null-ls.nvim",
-                config = function()
-                    require("jaron.plugins.null-ls")
-                end,
-                requires = {"nvim-lua/plenary.nvim"}
-            }
-        )
         -- session mananager
         use {
             "rmagatti/auto-session",

@@ -1,7 +1,5 @@
 local vopt = vim.opt
 
---vopt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr-o:hor20"
-
 -- line numbers
 vopt.number = true
 vopt.relativenumber = false
