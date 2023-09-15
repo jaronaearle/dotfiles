@@ -49,4 +49,3 @@ ZSH_THEME_RUBY_PROMPT_SUFFIX="›%f"
 
 }
 
-echo 'DOOM JAR'

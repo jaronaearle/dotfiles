@@ -4,3 +4,5 @@ nvim/plugin/*
 nvim/tmux-client-*.log
 tmux/plugins/*
 karabiner/automatic_backups/*
+
+scripts/secrets.sh

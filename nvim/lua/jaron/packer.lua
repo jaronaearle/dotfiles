@@ -35,6 +35,7 @@ return require("packer").startup(
                 run = "make install_jsregexp"
             }
         )
+        use {"rafamadriz/friendly-snippets"}
         -- lsp saga
         use(
             {
@@ -45,6 +46,8 @@ return require("packer").startup(
                 end
             }
         )
+        -- lsp kind
+        use {"onsails/lspkind.nvim"}
         -- alpha startup
         use {
             "goolord/alpha-nvim",
