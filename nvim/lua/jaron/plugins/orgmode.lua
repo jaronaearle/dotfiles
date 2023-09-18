@@ -1,7 +1,6 @@
 require("orgmode").setup_ts_grammar()
 
 local org_dir = "~/Sync/Org/new/"
--- local org_dir = "~/Sync/Org/"
 
 require("orgmode").setup(
     {
@@ -15,9 +14,10 @@ require("orgmode").setup(
             MISSED = ":foreground #bed3f3 :weight bold :slant italic"
         },
         org_agenda_span = "day",
-        org_agenda_files = {org_dir .. "*"},
+        org_agenda_files = {org_dir .. "{*.org,**/*.org}"},
+        -- org_agenda_files = {org_dir .. "*"},
         org_agenda_skip_deadline_if_done = false,
-        org_deadline_warning_days = 3,
+        org_deadline_warning_days = 1,
         org_default_notes_file = org_dir .. "refile.org",
         org_capture_templates = {
             j = {
