@@ -26,7 +26,7 @@ require("orgmode").setup(
             },
             t = {
                 description = "Todo",
-                template = "** TODO [#B] %?\nSCHEDULED: %t\nDEADLINE: < deadline >\n%u",
+                template = "** TODO [#B] %?\nDEADLINE: %t SCHEDULED: %t\n%u",
                 target = org_dir .. "todo.org"
             },
             r = {
