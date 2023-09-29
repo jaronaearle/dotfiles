@@ -115,9 +115,5 @@ source ~/.config/scripts/load.sh
 # Copies the contents of alias file to custom zsh alias file
 cp ~/.config/scripts/alias.sh ~/.oh-my-zsh/custom/alias.zsh
 
-alias podd='pod deintegrate'
-alias podi='arch -x86_64 pod install'
-alias opk="open ~/Code/mobile-app/sickOs/android/app/build/outputs/apk/release"
-
 # Hide ruby prompt info as described here: https://stackoverflow.com/questions/39169744/rvm-showing-ruby-version-in-zsh
 function ruby_prompt_info() { echo '' }

@@ -22,4 +22,4 @@ load-nvmrc
 
 # nvm script to copy previous version deps when installing new version
 
-echo "nvm hooksoaded"
+echo "nvm hooks loaded"

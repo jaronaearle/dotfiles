@@ -32,7 +32,9 @@ export PATH=$ANDROID_HOME/tools/bin:$PATH
 export PAGER="most"
 
 # secrets
-source "$XDG_CONFIG_HOME/scripts/secrets.sh"
+if [ -f "$XDG_CONFIG_HOME/scripts/secrets.sh" ]; then
+  source "$XDG_CONFIG_HOME/scripts/secrets.sh"
+fi
 
 # <- init ->
 #thefuck
