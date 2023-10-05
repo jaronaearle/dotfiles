@@ -184,6 +184,7 @@ return require("packer").startup(
         -- indent blankline
         use {
             "lukas-reineke/indent-blankline.nvim",
+            tag = "v2.20.8",
             config = function()
                 require("jaron.plugins.indent-blankline")
             end
@@ -250,7 +251,7 @@ return require("packer").startup(
                 require("jaron.plugins.goto-preview")
             end
         }
-        -- surround your shit
+        -- surround yo shit
         use(
             {
                 "kylechui/nvim-surround",
@@ -282,17 +283,18 @@ return require("packer").startup(
             end
         }
         -- dev docs
-        use {
-            "luckasRanarison/nvim-devdocs",
-            requires = {
-                "nvim-lua/plenary.nvim",
-                "nvim-telescope/telescope.nvim",
-                "nvim-treesitter/nvim-treesitter"
-            },
-            config = function()
-                require("nvim-devdocs").setup({})
-            end
-        }
+        -- use {
+        --     "luckasRanarison/nvim-devdocs",
+        --     requires = {
+        --         "nvim-lua/plenary.nvim",
+        --         "nvim-telescope/telescope.nvim",
+        --         "nvim-treesitter/nvim-treesitter"
+        --     },
+        --     config = function()
+        --         require("nvim-devdocs").setup({})
+        --     end
+        -- }
+        -- tab out of closing quotes and brackets and stuff
         use {
             "abecodes/tabout.nvim",
             config = function()
@@ -313,13 +315,13 @@ return require("packer").startup(
                 require("jaron.plugins.highlight-local")
             end
         }
-        use {
-            "m4xshen/hardtime.nvim",
-            requires = {"nvim-lua/plenary.nvim"},
-            config = function()
-                require("jaron.plugins.hardtime")
-            end
-        }
+        -- use {
+        --     "m4xshen/hardtime.nvim",
+        --     requires = {"nvim-lua/plenary.nvim"},
+        --     config = function()
+        --         require("jaron.plugins.hardtime")
+        --     end
+        -- }
         -- <| ~~~ PLUGINS  IM EXPERIMENTING WITH ~~~ |>
         use {
             "famiu/bufdelete.nvim"

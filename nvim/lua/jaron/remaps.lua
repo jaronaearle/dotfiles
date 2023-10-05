@@ -91,4 +91,4 @@ map("n", leaderMap("fp"), cmdFunc("redir @* | echo @%"), optsFunc("Copy path of 
 map("n", "<leader>f", "<cmd>Format<CR>", {noremap = true, silent = true})
 map("n", leaderMap("yz"), cmdFunc("'y,'zd<CR>"), optsFunc("Delete text between marks y and z"))
 map("n", leaderMap("df"), cmdFunc("DiffviewOpen"), optsFunc("Open Diffview"))
-map("n", leaderMap("Df"), cmdFunc("DiffviewClose"), optsFunc("Close Diffview"))
+map("n", leaderMap("dF"), cmdFunc("DiffviewClose"), optsFunc("Close Diffview"))

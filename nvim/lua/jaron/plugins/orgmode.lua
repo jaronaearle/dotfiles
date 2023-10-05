@@ -7,7 +7,7 @@ require("orgmode").setup(
         org_todo_keywords = {"TODO(t)", "NEXT", "STARTED", "|", "DONE", "CANCELLED", "MISSED"},
         org_todo_keyword_faces = {
             TODO = ":foreground #b80000 :weight bold :slant italic",
-            NEXT = ":foreground #db3e00 :weight bold :slant italic",
+            NEXT = ":foreground #ff6e00 :weight bold :slant italic",
             STARTED = ":foreground #fccb00 :weight bold :slant italic",
             DONE = ":foreground #008b02 :weight bold :slant italic",
             CANCELLED = ":foreground #c4def6 :weight bold :slant italic",
