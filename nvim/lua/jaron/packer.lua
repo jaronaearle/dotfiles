@@ -84,7 +84,7 @@ return require("packer").startup(
         -- Telescope
         use {
             "nvim-telescope/telescope.nvim",
-            tag = "0.1.1",
+            tag = "0.1.4",
             config = function()
                 require("jaron.plugins.telescope")
             end
