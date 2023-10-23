@@ -4,14 +4,15 @@ local org_dir = "~/Org/org/"
 
 require("orgmode").setup(
     {
-        org_todo_keywords = {"TODO(t)", "NEXT", "STARTED", "|", "DONE", "CANCELLED", "MISSED"},
+        org_todo_keywords = {"TODO(t)", "NEXT", "STARTED", "|", "DONE", "CANCELLED", "MISSED", "BACKLOG"},
         org_todo_keyword_faces = {
             TODO = ":foreground #b80000 :weight bold :slant italic",
             NEXT = ":foreground #ff6e00 :weight bold :slant italic",
             STARTED = ":foreground #fccb00 :weight bold :slant italic",
             DONE = ":foreground #008b02 :weight bold :slant italic",
             CANCELLED = ":foreground #c4def6 :weight bold :slant italic",
-            MISSED = ":foreground #bed3f3 :weight bold :slant italic"
+            MISSED = ":foreground #bed3f3 :weight bold :slant italic",
+            BACKLOG = ":foreground #03A4FF :weight bold :slant italic"
         },
         org_agenda_span = "day",
         org_agenda_files = {org_dir .. "**/*"},
