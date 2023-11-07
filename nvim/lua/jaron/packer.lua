@@ -175,6 +175,14 @@ return require("packer").startup(
                 require("jaron.plugins.auto-pairs")
             end
         }
+        use {
+            "altermo/ultimate-autopair.nvim",
+            event = {"InsertEnter", "CmdlineEnter"},
+            branch = "v0.6", --recomended as each new version will have breaking changes
+            config = function()
+                require("ultimate-autopair").setup({})
+            end
+        }
         -- auto detect indentation
         use {
             "nmac427/guess-indent.nvim",
@@ -328,6 +336,17 @@ return require("packer").startup(
         -- <| ~~~ PLUGINS  IM EXPERIMENTING WITH ~~~ |>
         use {
             "famiu/bufdelete.nvim"
+        }
+        use {
+            "akinsho/git-conflict.nvim",
+            tag = "*",
+            config = function()
+                require("git-conflict").setup(
+                    {
+                        default_mappings = true
+                    }
+                )
+            end
         }
     end
 )
