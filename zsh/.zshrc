@@ -75,9 +75,9 @@ plugins=(
   zsh-syntax-highlighting
   zsh-autosuggestions
   sudo
-  copyfile
-  copypath
-  copybuffer
+  # copyfile
+  # copypath
+  # copybuffer
 )
 
 source $ZSH/oh-my-zsh.sh

@@ -9,21 +9,21 @@ vim.g.loaded_netrwPlugin = 1
 -- <C-v> - split
 -- <C-x> - vsplit
 
--- require("nvim-tree").setup {
---     sort_by = "case_sensitive",
---     view = {
---         width = 50
---     },
---     filters = {
---         dotfiles = false,
---         custom = {".git", ".DS_Store"}
---     },
---     git = {ignore = false},
---     actions = {
---         open_file = {
---             quit_on_open = true
---         }
---     }
--- }
---
--- vim.keymap.set("n", "<leader><C-e>", ":NvimTreeFindFileToggle<CR>", {noremap = true, silent = true})
+require("nvim-tree").setup {
+    sort_by = "case_sensitive",
+    view = {
+        width = 50
+    },
+    filters = {
+        dotfiles = false,
+        custom = {".git", ".DS_Store"}
+    },
+    git = {ignore = false},
+    actions = {
+        open_file = {
+            quit_on_open = true
+        }
+    }
+}
+
+vim.keymap.set("n", "<leader><C-e>", ":NvimTreeFindFileToggle<CR>", {noremap = true, silent = true})

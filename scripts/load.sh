@@ -47,9 +47,6 @@ eval "$(tmuxifier init -)"
 eval "$(rbenv init - zsh)"
 source "$(dirname $(gem which colorls))/tab_complete.sh"
 
-# sh vi mode
-source "$(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh"
-
 # zoxide
 eval "$(zoxide init zsh)"
 

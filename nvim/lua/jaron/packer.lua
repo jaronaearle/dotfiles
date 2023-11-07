@@ -67,12 +67,15 @@ return require("packer").startup(
         --    -- Debugger -- TODO config debugger
         use {"mfussenegger/nvim-dap"}
         -- Nvim Tree
-        -- use {
-        --     "nvim-tree/nvim-tree.lua",
-        --     requires = {
-        --         "nvim-tree/nvim-web-devicons" -- optional
-        --     }
-        -- }
+        use {
+            "nvim-tree/nvim-tree.lua",
+            config = function()
+                require("jaron.plugins.nvim-tree")
+            end,
+            requires = {
+                "nvim-tree/nvim-web-devicons" -- optional
+            }
+        }
         -- Treesitter
         use {
             "nvim-treesitter/nvim-treesitter",
