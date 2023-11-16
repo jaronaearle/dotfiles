@@ -129,7 +129,7 @@ return require("packer").startup(
             config = function()
                 vim.keymap.set(
                     "i",
-                    "<leader>k",
+                    "<leader><C-k>",
                     function()
                         return vim.fn["codeium#Accept"]()
                     end,
@@ -137,7 +137,7 @@ return require("packer").startup(
                 )
                 vim.keymap.set(
                     "i",
-                    "<leader>l",
+                    "<leader><C-l>",
                     function()
                         return vim.fn["codeium#CycleCompletions"](1)
                     end,
@@ -145,7 +145,7 @@ return require("packer").startup(
                 )
                 vim.keymap.set(
                     "i",
-                    "<leader>h",
+                    "<leader><C-h>",
                     function()
                         return vim.fn["codeium#CycleCompletions"](-1)
                     end,
@@ -153,7 +153,7 @@ return require("packer").startup(
                 )
                 vim.keymap.set(
                     "i",
-                    "<leader>j",
+                    "<leader><C-j>",
                     function()
                         return vim.fn["codeium#Clear"]()
                     end,

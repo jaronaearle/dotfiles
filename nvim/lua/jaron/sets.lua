@@ -2,7 +2,7 @@ local vopt = vim.opt
 
 -- line numbers
 vopt.number = true
-vopt.relativenumber = false
+vopt.relativenumber = true
 vopt.cursorline = true
 
 vopt.tabstop = 2
