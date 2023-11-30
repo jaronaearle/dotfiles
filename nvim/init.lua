@@ -1,5 +1,2 @@
-require("jaron")
-
-vim.loader.enable()
-
-print("init the fucker")
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
