@@ -8,3 +8,22 @@ vim.keymap.set({ "i", "v", "n" }, "kj", "<ESC>", { noremap = true, silent = true
 
 -- redo with U
 vim.keymap.set("n", "<S-u>", "<C-r>", { noremap = true, silent = true, desc = "Shift U to redo" })
+
+-- codeium
+vim.keymap.set("i", "<leader><C-k>", function()
+  return vim.fn["codeium#Accept"]()
+end, { expr = true })
+
+vim.keymap.set("i", "<leader><C-l>", function()
+  return vim.fn["codeium#CycleCompletions"](1)
+end, { expr = true })
+
+vim.keymap.set("i", "<leader><C-h>", function()
+  return vim.fn["codeium#CycleCompletions"](-1)
+end, { expr = true })
+
+vim.keymap.set("i", "<leader><C-j>", function()
+  return vim.fn["codeium#Clear"]()
+end, { expr = true })
+
+vim.g.codeium_no_map_tab = 1
