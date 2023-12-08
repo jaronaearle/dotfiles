@@ -1,5 +1,5 @@
 {
-  "title": "TAB: Converts uiojklnm,. to num pad",
+  "title": "TAB + shift: Converts uiojklnm,. to num pad",
   "maintainer": ["Jaro"],
   "homepage": "<link repo here>",
   "rules": [
@@ -227,7 +227,7 @@
           "from": {
             "key_code": "tab",
             "modifiers": {
-              "optional": ["any"]
+              "mandatory": ["shift"]
             }
           },
           "to_if_alone": [
