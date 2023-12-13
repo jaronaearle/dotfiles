@@ -1,4 +1,5 @@
 local discipline = require("jaro.discipline")
+local harpoon = require("harpoon")
 
 discipline.cowboy()
 
@@ -83,3 +84,25 @@ keymap.set("n", leaderMap("dF"), cmdFunc("DiffviewClose"), optsFunc("Close Diffv
 
 -- open oil in floating window
 keymap.set("n", "-", cmdFunc("Oil --float"), optsFunc("Open Oil in floating window"))
+
+harpoon:setup({})
+
+vim.keymap.set("n", "<leader>A", function()
+  harpoon:list():append()
+end)
+vim.keymap.set("n", "<leader>L", function()
+  harpoon.ui:toggle_quick_menu(harpoon:list())
+end)
+
+vim.keymap.set("n", "<C-1>", function()
+  harpoon:list():select(1)
+end)
+vim.keymap.set("n", "<C-2>", function()
+  harpoon:list():select(2)
+end)
+vim.keymap.set("n", "<C-3>", function()
+  harpoon:list():select(3)
+end)
+vim.keymap.set("n", "<C-4>", function()
+  harpoon:list():select(4)
+end)
