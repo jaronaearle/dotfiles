@@ -13,6 +13,7 @@
 	cb = checkout -b
 	co = checkout
 	c = commit
+  cnv = commit --no-verify
 	cm = commit -m
 	cam = commit --amend
 	can = commit --amend --no-edit
@@ -22,7 +23,7 @@
 	pr = pull --rebase
 	mg = merge
 	df = diff
-	fc = fetch
+	f = fetch
 	sup = push --set-upstream origin
 	sh = stash
 	sp = stash pop
@@ -31,15 +32,12 @@
 	rba = rebase --abort
 	tree = log --decorate --oneline --graph --all
 	undo = reset --hard HEAD~1
-	wa = worktree add
-	wr = worktree remove
-	wl = worktree list
-	wt-clone = "!sh $HOME/Code/shell/shell-fish-allergy/scripts/worktree-clone-bare.sh"
 	rsu = remote set-url origin
-	rv = remote -v
+  rv = remote -v
 
 [core]
-    pager = delta
+    pager = less
+    hooksPath = ~/.config/git/hooks
 
 [interactive]
     diffFilter = delta --color-only

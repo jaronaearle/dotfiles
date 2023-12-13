@@ -1,7 +1,15 @@
-# <- env vars ->
 # config path
 export XDG_CONFIG_HOME="$HOME/.config"
+
 source "$XDG_CONFIG_HOME/theme/doom-jar.zsh-theme"
+
+# <- env vars ->
+#
+# TODO: Add env var for comp type + only load vars for type;
+# Ex: export JAR_WORK="work" - script for JAR_WORK loads.
+
+export JAR_SCRIPTS="$XDG_CONFIG_HOME/scripts"
+export JAR_HOOKS="$JAR_SCRIPTS/hooks"
 
 # default editor
 export EDITOR="nvim"
@@ -10,8 +18,8 @@ export GIT_EDITOR="vim"
 
 # nvim
 export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"                                       # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
 # path
 export PATH=$PATH:/Users/jaronearle/go
@@ -32,11 +40,12 @@ export PATH=$ANDROID_HOME/tools/bin:$PATH
 export PAGER="most"
 
 # secrets
-if [ -f "$XDG_CONFIG_HOME/scripts/secrets.sh" ]; then
-  source "$XDG_CONFIG_HOME/scripts/secrets.sh"
+if [ -f "$JAR_SCRIPTS/secrets.sh" ]; then
+	source "$JAR_SCRIPTS/secrets.sh"
 fi
 
 # <- init ->
+
 #thefuck
 eval "$(thefuck --alias)"
 
@@ -51,6 +60,4 @@ source "$(dirname $(gem which colorls))/tab_complete.sh"
 eval "$(zoxide init zsh)"
 
 # load hooks
-source "$XDG_CONFIG_HOME/scripts/hooks/nvm.sh"
-
-echo "env vars loaded..."
+source "$JAR_HOOKS/nvm.sh"
