@@ -24,8 +24,8 @@ keymap.set("n", "x", '"_x')
 keymap.set({ "n", "v" }, "dl", '"_dd')
 
 -- copy/paste from system clipboard
-keymap.set({ "n", "v" }, "scy", '"+y', optsFunc("Copy to system clipboard - Normal | Visual"))
-keymap.set({ "n", "v" }, "scp", '"+p', optsFunc("Paste from system clipboard - Normal | Visual"))
+keymap.set({ "n", "v" }, "sy", '"+y', optsFunc("Copy to system clipboard - Normal | Visual"))
+keymap.set({ "n", "v" }, "sp", '"+p', optsFunc("Paste from system clipboard - Normal | Visual"))
 
 -- jk and kj = ESC
 keymap.set({ "i", "v", "n" }, "jk", "<ESC>", { noremap = true, silent = true, desc = "jk escapes" })
@@ -84,6 +84,24 @@ keymap.set("n", leaderMap("dF"), cmdFunc("DiffviewClose"), optsFunc("Close Diffv
 
 -- open oil in floating window
 keymap.set("n", "-", cmdFunc("Oil --float"), optsFunc("Open Oil in floating window"))
+
+-- local newlineReg = function(cap)
+--   vim.cmd("call setreg('o', string.char(10))")
+--
+--   local paste = "p"
+--   if cap then
+--     paste = "P"
+--   end
+--
+--   print("fuck")
+--   return '"o' .. paste
+-- end
+--
+-- keymap.set("n", leaderMap("n"), function()
+--   newlineReg(false)
+-- end, optsFunc("Inserts newline beneath cursor"))
+--
+-- keymap.set("n", leaderMap("N"), newlineReg(true), optsFunc("Inserts newline above cursor"))
 
 harpoon:setup({})
 

@@ -15,6 +15,9 @@ return {
         return conf
       end,
     }
+    opts.keymaps = {
+      ["<leader>6"] = "toggle_float()",
+    }
   end,
   -- Optional dependencies
   dependencies = { "nvim-tree/nvim-web-devicons" },
