@@ -1,10 +1,10 @@
 {
-  "title": "TAB + shift: Converts uiojklnm,. to num pad",
+  "title": "d + shift: Converts uiojklnm,. to num pad",
   "maintainer": ["Jaro"],
   "homepage": "<link repo here>",
   "rules": [
     {
-      "description": "TAB: Converts uiojklnm,. to num pad",
+      "description": "d + shift: Converts uiojklnm,. to num pad",
       "manipulators": [
         {
           "type": "basic",
@@ -225,14 +225,14 @@
         {
           "type": "basic",
           "from": {
-            "key_code": "tab",
+            "key_code": "d",
             "modifiers": {
               "mandatory": ["shift"]
             }
           },
           "to_if_alone": [
             {
-              "key_code": "tab"
+              "key_code": "d"
             }
           ],
           "to": [

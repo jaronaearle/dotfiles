@@ -1,13 +1,35 @@
 {
-  "title": "TAB: Converts backwards delete to forward delete and w to left opt",
+  "title": "Holding h || l + d deletes forward || backwrds",
   "rules": [
     {
-      "description": "TAB + backspace converts backwards delete to forward delete",
+      "description": "Holding h || l + d deletes forward || backwrd",
       "manipulators": [
         {
           "type": "basic",
           "from": {
-            "key_code": "delete_or_backspace",
+            "key_code": "d",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to": [
+            {
+              "key_code": "delete_or_backspace",
+              "lazy": true
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "bdel",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "d",
             "modifiers": {
               "optional": ["any"]
             }
@@ -21,7 +43,7 @@
           "conditions": [
             {
               "type": "variable_if",
-              "name": "tab pressed",
+              "name": "fdel",
               "value": 1
             }
           ]
@@ -29,20 +51,20 @@
         {
           "type": "basic",
           "from": {
-            "keycode": "tab",
+            "keycode": "h",
             "modifiers": {
               "optional": ["any"]
             }
           },
           "to_if_alone": [
             {
-              "key_code": "tab"
+              "key_code": "h"
             }
           ],
           "to": [
             {
               "set_variable": {
-                "name": "tab pressed",
+                "name": "bdel",
                 "value": 1
               },
               "lazy": true
@@ -51,7 +73,38 @@
           "to_after_key_up": [
             {
               "set_variable": {
-                "name": "tab pressed",
+                "name": "bdel",
+                "value": 0
+              }
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "keycode": "l",
+            "modifiers": {
+              "optional": ["any"]
+            }
+          },
+          "to_if_alone": [
+            {
+              "key_code": "l"
+            }
+          ],
+          "to": [
+            {
+              "set_variable": {
+                "name": "fdel",
+                "value": 1
+              },
+              "lazy": true
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "set_variable": {
+                "name": "fdel",
                 "value": 0
               }
             }
