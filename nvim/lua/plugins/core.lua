@@ -18,12 +18,4 @@ return {
       },
     },
   },
-  -- {
-  --   "lukas-reineke/indent-blankline.nvim",
-  --   opts = function(_, opts)
-  --     local highlight = { 'CursorColumn", "WhiteSpace' }
-  --     opts.indent = { highlight = highlight, char = "" }
-  --     opts.whitespace = { highlight = highlight, remove_blankline_trail = false }
-  --   end,
-  -- },
 }
