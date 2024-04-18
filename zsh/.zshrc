@@ -75,6 +75,7 @@ plugins=(
   zsh-syntax-highlighting
   zsh-autosuggestions
   sudo
+  asdf
   # copyfile
   # copypath
   # copybuffer
@@ -117,3 +118,18 @@ cp ~/.config/scripts/alias.sh ~/.oh-my-zsh/custom/alias.zsh
 
 # Hide ruby prompt info as described here: https://stackoverflow.com/questions/39169744/rvm-showing-ruby-version-in-zsh
 function ruby_prompt_info() { echo '' }
+
+export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
+
+# pnpm
+export PNPM_HOME="/Users/jaronearle/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# fzf
+eval "$(fzf --zsh)"
+
+export PATH="$HOME/.local/bin:$PATH"
