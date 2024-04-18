@@ -1,5 +1,16 @@
 local M = {}
 
+local exclude_list = { "oil", "noice", "telescope" }
+
+local function e_ft()
+  for _, v in ipairs(exclude_list) do
+    if vim.bo.filetype == v then
+      return true
+    end
+  end
+  return false
+end
+
 function M.cowboy()
   ---@type table?
   local id
@@ -12,7 +23,8 @@ function M.cowboy()
       if vim.v.count > 0 then
         count = 0
       end
-      if count >= 10 then
+      local fuck = e_ft()
+      if count >= 10 and not fuck then
         ok, id = pcall(vim.notify, "Whoa there, Cowboy!", vim.log.levels.WARN, {
           icon = "🤠",
           replace = id,

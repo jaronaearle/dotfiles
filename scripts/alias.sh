@@ -36,7 +36,7 @@ alias pi='pnpm i'
 
 # Scripts
 alias ls='~/.config/scripts/ls-tree.sh'
-alias gcup='~/config/scripts/gcup.sh'
+alias gcup='~/.config/scripts/gcup.sh'
 
 # Utilities
 alias sz='source ~/.zshrc && echo sourced zshrc!'
