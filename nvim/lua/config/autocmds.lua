@@ -24,25 +24,13 @@ createAutoCmd("WinLeave", {
   end,
 })
 
--- show start up when all buffers are closed
-
-local startup_on_empty = createAuGroup("startup_on_empty", { clear = true })
-
-createAutoCmd("User", {
-  -- pattern = "BDeletePost*",
-  pattern = "*",
-  group = startup_on_empty,
-  callback = function(event)
-    local fallback_name = vim.api.nvim_buf_get_name(event.buf)
-    local fallback_ft = vim.api.nvim_buf_get_option(event.buf, "filetype")
-    local fallback_on_empty = fallback_name == "" and fallback_ft == ""
-    -- print("FAAAAALLLL BAACKKKKK   ")
-    -- print(fallback_on_empty)
-    -- print(event)
-
-    if fallback_on_empty then
-      vim.cmd("Dashboard")
-      vim.cmd(event.buf .. "bwipeout")
+-- show dashboard after closing last open buffer
+createAutoCmd("BufDelete", {
+  callback = function()
+    local bufnr = api.nvim_get_current_buf()
+    local name = api.nvim_buf_get_name(bufnr)
+    if name == "" then
+      cmd("Dashboard")
     end
   end,
 })

@@ -29,6 +29,7 @@ alias cd='z'
 alias nrn='npm run'
 alias ni='npm i'
 alias nleg='npm install --legacy-peer-deps'
+alias npk='npx npkill'
 
 # Pnpm
 alias prn='pnpm run'
@@ -41,8 +42,6 @@ alias gcup='~/.config/scripts/gcup.sh'
 # Utilities
 alias sz='source ~/.zshrc && echo sourced zshrc!'
 alias st='tmux source ~/.config/tmux/tmux.conf && echo sourced tmux config!'
-
-alias nmodsfind='find . -name "node_modules" -type d -prune | xargs du -chs'
 
 # Navigation
 alias xdg="cd $XDG_CONFIG_HOME"

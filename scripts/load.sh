@@ -37,7 +37,7 @@ export PATH=$ANDROID_HOME/tools:$PATH
 export PATH=$ANDROID_HOME/tools/bin:$PATH
 
 # pager
-export PAGER="most"
+# export PAGER="most"
 
 # secrets
 if [ -f "$JAR_SCRIPTS/secrets.sh" ]; then
@@ -54,10 +54,15 @@ eval "$(tmuxifier init -)"
 
 # rbenv
 # eval "$(rbenv init - zsh)"
+
+# colorls
 source "$(dirname $(gem which colorls))/tab_complete.sh"
 
 # zoxide
 eval "$(zoxide init zsh)"
+
+# fzf
+eval "$(fzf --zsh)"
 
 # load hooks
 source "$JAR_HOOKS/nvm.sh"
