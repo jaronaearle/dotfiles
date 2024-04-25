@@ -25,7 +25,7 @@ function M.cowboy()
       end
       local fuck = e_ft()
       if count >= 10 and not fuck then
-        ok, id = pcall(vim.notify, "Whoa there, Cowboy!", vim.log.levels.WARN, {
+        ok, id = pcall(vim.notify, "Whoa there, Cowboy!\nbtype: " .. vim.bo.filetype, vim.log.levels.WARN, {
           icon = "🤠",
           replace = id,
           keep = function()
