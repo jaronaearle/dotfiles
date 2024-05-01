@@ -45,8 +45,8 @@ keymap.set({ "n", "v" }, leaderMap("gp"), '"gp', optsFunc("Paste from register g
 keymap.set("n", leaderMap("yz"), cmdFunc("'y,'zd<CR>delm yz<CR>"), optsFunc("Delete everything between marks y and z"))
 
 -- insert newline above/below without leaving normal mode
-keymap.set("n", leaderMap("n"), "o<ESC>k", optsFunc("Inserts newline below cursor"))
-keymap.set("n", leaderMap("N"), "O<ESC>j", optsFunc("Inserts newline above cursor"))
+keymap.set("n", leaderMap("o"), "o<ESC>k", optsFunc("Inserts newline below cursor"))
+keymap.set("n", leaderMap("O"), "O<ESC>j", optsFunc("Inserts newline above cursor"))
 
 -- jk and kj = ESC
 keymap.set({ "i", "v", "n" }, "jk", "<ESC>", { noremap = true, silent = true, desc = "jk escapes" })
