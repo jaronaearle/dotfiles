@@ -93,5 +93,8 @@ keymap.set("n", leaderMap("tf"), cbFunc(runner.run, vim.fn.expand("%")), optsFun
 keymap.set("n", leaderMap("tl"), cbFunc(runner.run_last), optsFunc("Run last test"))
 keymap.set("n", leaderMap("tL"), cbFunc(runner.run_last, { strategy = "dap" }), optsFunc("Run last with debugger"))
 
+-- undotree
+-- keymap.set("u", leaderMap("u"), cmdFunc("lua require('undotree').toggle()"), optsFunc("Toggle undotree"))
+
 -- dbee
-keymap.set("n", leaderMap("DB"), cbFunc(require("dbee").open), optsFunc("Open dbee"))
+-- keymap.set("n", leaderMap("DB"), cbFunc(require("dbee").open), optsFunc("Open dbee"))
