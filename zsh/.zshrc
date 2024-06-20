@@ -75,6 +75,7 @@ plugins=(
   zsh-syntax-highlighting
   zsh-autosuggestions
   sudo
+  asdf
   # copyfile
   # copypath
   # copybuffer
@@ -114,6 +115,7 @@ source ~/.config/scripts/load.sh
 
 # Copies the contents of alias file to custom zsh alias file
 cp ~/.config/scripts/alias.sh ~/.oh-my-zsh/custom/alias.zsh
+eval "$(fzf --zsh)"
 
 # Hide ruby prompt info as described here: https://stackoverflow.com/questions/39169744/rvm-showing-ruby-version-in-zsh
 function ruby_prompt_info() { echo '' }

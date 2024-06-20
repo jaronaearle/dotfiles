@@ -9,18 +9,19 @@ local createAuGroup = function(group, opts)
   api.nvim_create_augroup(group, opts)
 end
 
--- enable/disable cursorline on buf enter/leave
+-- enable buf enter
 createAutoCmd("WinEnter", {
   pattern = "*",
   callback = function()
-    cmd("setlocal cursorline")
+    cmd("setlocal cursorline relativenumber")
   end,
 })
 
+-- disabled buf exit
 createAutoCmd("WinLeave", {
   pattern = "*",
   callback = function()
-    cmd("setlocal nocursorline")
+    cmd("setlocal nocursorline norelativenumber")
   end,
 })
 

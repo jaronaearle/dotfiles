@@ -55,6 +55,9 @@ keymap.set({ "i", "v", "n" }, "kj", "<ESC>", { noremap = true, silent = true, de
 -- redo with U
 keymap.set("n", "<S-u>", "<C-r>", { noremap = true, silent = true, desc = "Shift U to redo" })
 
+-- replace word under cursor with content from 0th register
+keymap.set("n", "sw", 'diw"0P', optsFunc("Replace word under cursor with content from 0th register"))
+
 -- Split window
 keymap.set("n", "hs", ":split<Return>", opts)
 keymap.set("n", "vs", ":vsplit<Return>", opts)
@@ -95,6 +98,3 @@ keymap.set("n", leaderMap("tL"), cbFunc(runner.run_last, { strategy = "dap" }), 
 
 -- undotree
 -- keymap.set("u", leaderMap("u"), cmdFunc("lua require('undotree').toggle()"), optsFunc("Toggle undotree"))
-
--- dbee
--- keymap.set("n", leaderMap("DB"), cbFunc(require("dbee").open), optsFunc("Open dbee"))

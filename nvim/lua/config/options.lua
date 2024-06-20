@@ -7,15 +7,8 @@ opt.list = true
 opt.listchars:append("space:⋅")
 opt.listchars:append("eol:↴")
 
--- Ibl colors
-cmd([[highlight IndentBlankLineContextChar guibg=#af87af gui=nocombine]])
-cmd([[highlight IblIndent1 guibg=#2F2736 gui=nocombine]])
-cmd([[highlight IblIndent2 guibg=#352E3F gui=nocombine]])
-cmd([[highlight IblIndent3 guibg=#42374B gui=nocombine]])
-
 -- line numbers
 opt.number = true
-opt.relativenumber = true
 
 opt.tabstop = 2
 opt.softtabstop = 2
@@ -54,19 +47,12 @@ cmd("set spelllang=en_us")
 
 vim.o.autoread = true
 
--- fzf
--- cmd("set rtp+=/opt/homebrew/opt/fzf")
-
 -- suppress checkhealth warning for shit i dont care about
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_julia_provider = 0
 vim.g.loaded_php_provider = 0
-
--- Undercurl
--- cmd([[let &t_Cs="\<Esc>[4:3m"]])
--- cmd([[let &t_Ce = "\<Esc>[4:0m"]])
 
 vim.cmd([[let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"]])
 vim.cmd([[let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"]])
