@@ -1,4 +1,5 @@
 .DS_Store
+.tool-versions
 
 nvim/plugin/*
 nvim/lazyvim.json
