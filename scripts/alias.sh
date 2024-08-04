@@ -43,5 +43,8 @@ alias gcup='~/.config/scripts/gcup.sh'
 alias sz='source ~/.zshrc && echo sourced zshrc!'
 alias st='tmux source ~/.config/tmux/tmux.conf && echo sourced tmux config!'
 
+# Tmux
+alias ta='tmux attach'
+
 # Navigation
 alias xdg="cd $XDG_CONFIG_HOME"
