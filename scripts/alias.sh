@@ -36,7 +36,7 @@ alias prn='pnpm run'
 alias pi='pnpm i'
 
 # Scripts
-alias ls='~/.config/scripts/ls-tree.sh'
+# alias ls='~/.config/scripts/ls-tree.sh'
 alias gcup='~/.config/scripts/gcup.sh'
 
 # Utilities
