@@ -113,9 +113,15 @@ source $ZSH/oh-my-zsh.sh
 source ~/.config/theme/doom-jar.zsh-theme
 source ~/.config/scripts/load.sh
 
-# Copies the contents of alias file to custom zsh alias file
-cp ~/.config/scripts/alias.sh ~/.oh-my-zsh/custom/alias.zsh
 eval "$(fzf --zsh)"
 
 # Hide ruby prompt info as described here: https://stackoverflow.com/questions/39169744/rvm-showing-ruby-version-in-zsh
 function ruby_prompt_info() { echo '' }
+
+# pnpm
+export PNPM_HOME="/Users/jaronearle/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

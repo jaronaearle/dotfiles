@@ -1,377 +1,535 @@
 {
-    "profiles": [
-        {
-            "complex_modifications": {
-                "parameters": { "basic.to_if_alone_timeout_milliseconds": 500 },
-                "rules": [
-                    {
-                        "description": "Caps Lock to ESC on press - CTL on hold",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "escape",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_control",
-                                        "lazy": true
-                                    }
-                                ],
-                                "to_if_alone": [{ "key_code": "escape" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Space: Converts 'hjkl' to arrow keys",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "spacebar pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "h",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "left_arrow" }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "spacebar pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "k",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "up_arrow" }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "spacebar pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "j",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "down_arrow" }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "spacebar pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "l",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "right_arrow" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "tab",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "parameters": {
-                                    "basic.to_if_alone_timeout_milliseconds": 150,
-                                    "basic.to_if_held_down_threshold_milliseconds": 250
-                                },
-                                "to_after_key_up": [
-                                    {
-                                        "set_variable": {
-                                            "name": "spacebar pressed",
-                                            "value": 0
-                                        }
-                                    }
-                                ],
-                                "to_if_alone": [{ "key_code": "tab" }],
-                                "to_if_held_down": [
-                                    {
-                                        "lazy": true,
-                                        "set_variable": {
-                                            "name": "spacebar pressed",
-                                            "value": 1
-                                        }
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "TAB + backspace converts backwards delete to forward delete",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "tab pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "delete_or_backspace",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "delete_forward",
-                                        "lazy": true
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "keycode": "tab",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [
-                                    {
-                                        "lazy": true,
-                                        "set_variable": {
-                                            "name": "tab pressed",
-                                            "value": 1
-                                        }
-                                    }
-                                ],
-                                "to_after_key_up": [
-                                    {
-                                        "set_variable": {
-                                            "name": "tab pressed",
-                                            "value": 0
-                                        }
-                                    }
-                                ],
-                                "to_if_alone": [{ "key_code": "tab" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "TAB: Converts uiojklnm,. to num pad",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "tab pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "n",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "0" }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "tab pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "m",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "1" }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "tab pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "comma",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "2" }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "tab pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "period",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "3" }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "tab pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "j",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "4" }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "tab pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "k",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "5" }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "tab pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "l",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "6" }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "tab pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "u",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "7" }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "tab pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "i",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "8" }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "tab pressed",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "o",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [{ "key_code": "9" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "tab",
-                                    "modifiers": { "mandatory": ["shift"] }
-                                },
-                                "to": [
-                                    {
-                                        "set_variable": {
-                                            "name": "tab pressed",
-                                            "value": 1
-                                        }
-                                    }
-                                ],
-                                "to_after_key_up": [
-                                    {
-                                        "set_variable": {
-                                            "name": "tab pressed",
-                                            "value": 0
-                                        }
-                                    }
-                                ],
-                                "to_if_alone": [{ "key_code": "tab" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Control + quote becomes grave and tilde",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "quote",
-                                    "modifiers": {
-                                        "mandatory": ["left_control"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "key_code": "grave_accent_and_tilde" }],
-                                "type": "basic"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "name": "Default profile",
-            "selected": true,
-            "simple_modifications": [
-                {
-                    "from": { "key_code": "caps_lock" },
-                    "to": [{ "key_code": "escape" }]
-                }
+  "profiles": [
+    {
+      "complex_modifications": {
+        "parameters": { "basic.to_if_alone_timeout_milliseconds": 500 },
+        "rules": [
+          {
+            "description": "Caps Lock to ESC on press - CTL on hold",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "quote",
+                  "modifiers": {
+                    "mandatory": ["left_control"],
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "grave_accent_and_tilde"
+                  }
+                ],
+                "type": "basic"
+              }
             ]
+          },
+          {
+            "description": "TAB + backspace converts backwards delete to forward delete",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "name": "tab pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "delete_or_backspace",
+                  "modifiers": { "optional": ["any"] }
+                },
+                "to": [
+                  {
+                    "key_code": "delete_forward",
+                    "lazy": true
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "keycode": "tab",
+                  "modifiers": { "optional": ["any"] }
+                },
+                "to": [
+                  {
+                    "lazy": true,
+                    "set_variable": {
+                      "name": "tab pressed",
+                      "value": 1
+                    }
+                  }
+                ],
+                "to_after_key_up": [
+                  {
+                    "set_variable": {
+                      "name": "tab pressed",
+                      "value": 0
+                    }
+                  }
+                ],
+                "to_if_alone": [{ "key_code": "tab" }],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "TAB: Converts uiojklnm,. to num pad",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "name": "tab pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "n",
+                  "modifiers": { "optional": ["any"] }
+                },
+                "to": [{ "key_code": "0" }],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "tab pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "m",
+                  "modifiers": { "optional": ["any"] }
+                },
+                "to": [{ "key_code": "1" }],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "tab pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "comma",
+                  "modifiers": { "optional": ["any"] }
+                },
+                "to": [{ "key_code": "2" }],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "tab pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "period",
+                  "modifiers": { "optional": ["any"] }
+                },
+                "to": [{ "key_code": "3" }],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "tab pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "j",
+                  "modifiers": { "optional": ["any"] }
+                },
+                "to": [{ "key_code": "4" }],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "tab pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "k",
+                  "modifiers": { "optional": ["any"] }
+                },
+                "to": [{ "key_code": "5" }],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "tab pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "l",
+                  "modifiers": { "optional": ["any"] }
+                },
+                "to": [{ "key_code": "6" }],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "tab pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "u",
+                  "modifiers": { "optional": ["any"] }
+                },
+                "to": [{ "key_code": "7" }],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "tab pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "i",
+                  "modifiers": { "optional": ["any"] }
+                },
+                "to": [{ "key_code": "8" }],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "tab pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "o",
+                  "modifiers": { "optional": ["any"] }
+                },
+                "to": [{ "key_code": "9" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "tab",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "tab pressed",
+                      "value": 1
+                    }
+                  }
+                ],
+                "to_after_key_up": [
+                  {
+                    "set_variable": {
+                      "name": "tab pressed",
+                      "value": 0
+                    }
+                  }
+                ],
+                "to_if_alone": [{ "key_code": "tab" }],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Control + quote becomes grave and tilde",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "escape",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_control",
+                    "lazy": true
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "escape"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Space: Converts 'hjkl' to arrow keys",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "name": "spacebar pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "h",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_arrow"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "spacebar pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "k",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "up_arrow"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "spacebar pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "j",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "down_arrow"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "name": "spacebar pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "l",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "right_arrow"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "spacebar",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "lazy": true,
+                    "set_variable": {
+                      "name": "spacebar pressed",
+                      "value": 1
+                    }
+                  }
+                ],
+                "to_after_key_up": [
+                  {
+                    "set_variable": {
+                      "name": "spacebar pressed",
+                      "value": 0
+                    }
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "spacebar"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "TAB + Converts backwards delete to forward delete",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "name": "tab pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "delete_or_backspace",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "delete_forward",
+                    "lazy": true
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "keycode": "tab",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "lazy": true,
+                    "set_variable": {
+                      "name": "tab pressed",
+                      "value": 1
+                    }
+                  }
+                ],
+                "to_after_key_up": [
+                  {
+                    "set_variable": {
+                      "name": "tab pressed",
+                      "value": 0
+                    }
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "tab"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "TAB converts w to left opt",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "name": "tab pressed",
+                    "type": "variable_if",
+                    "value": 1
+                  }
+                ],
+                "from": {
+                  "key_code": "w",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to_if_held_down": [
+                  {
+                    "key_code": "left_option"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "keycode": "tab",
+                  "modifiers": {
+                    "optional": ["any"]
+                  }
+                },
+                "to": [
+                  {
+                    "lazy": true,
+                    "set_variable": {
+                      "name": "tab pressed",
+                      "value": 1
+                    }
+                  }
+                ],
+                "to_after_key_up": [
+                  {
+                    "set_variable": {
+                      "name": "tab pressed",
+                      "value": 0
+                    }
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "tab"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          }
+        ]
+      },
+      "name": "Default profile",
+      "selected": true,
+      "simple_modifications": [
+        {
+          "from": { "key_code": "caps_lock" },
+          "to": [{ "key_code": "escape" }]
         }
-    ]
+      ],
+      "virtual_hid_keyboard": {
+        "country_code": 0,
+        "indicate_sticky_modifier_keys_state": true,
+        "mouse_key_xy_scale": 100
+      }
+    }
+  ]
 }
