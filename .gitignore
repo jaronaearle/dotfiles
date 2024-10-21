@@ -1,11 +1,19 @@
 .DS_Store
 .tool-versions
 
+# nvim
 nvim/plugin/*
 nvim/lazyvim.json
 nvim/tmux-client-*
 nvim/lazy-lock.json
-tmux/plugins/*
-karabiner/automatic_backups/*
 
+# tmux
+tmux/plugins/*
+
+# karabiner
+karabiner/automatic_backups/*
+karabiner/karabiner.json
+
+
+# scripts
 scripts/secrets.sh
