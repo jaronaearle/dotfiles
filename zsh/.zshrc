@@ -109,11 +109,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zshl"
 
+# Begin - jar config
+
 # load theme and env vars
 source ~/.config/theme/doom-jar.zsh-theme
 source ~/.config/scripts/load.sh
-
-eval "$(fzf --zsh)"
 
 # Hide ruby prompt info as described here: https://stackoverflow.com/questions/39169744/rvm-showing-ruby-version-in-zsh
 function ruby_prompt_info() { echo '' }

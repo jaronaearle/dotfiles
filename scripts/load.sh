@@ -3,11 +3,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 source "$XDG_CONFIG_HOME/theme/doom-jar.zsh-theme"
 
-# <- env vars ->
-#
-# TODO: Add env var for comp type + only load vars for type;
-# Ex: export JAR_WORK="work" - script for JAR_WORK loads.
-
 export JAR_SCRIPTS="$XDG_CONFIG_HOME/scripts"
 export JAR_HOOKS="$JAR_SCRIPTS/hooks"
 
@@ -17,11 +12,14 @@ export VISUAL="nvim"
 export GIT_EDITOR="vim"
 
 # path
-# export PATH=$PATH:/Users/jaronearle/go
-# export PATH=$PATH:/Users/jaronearle/go/bin
 export PATH=$PATH:/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH
 export PATH=$PATH:$HOME/Code/flutter/flutter/bin
 export PATH=$PATH:$XDG_CONFIG_HOME/tmux/plugins/tmuxifier/bin
+
+# export box
+if [ -f "$JAR_SCRIPTS/box.sh" ]; then
+  source "$JAR_SCRIPTS/box.sh"
+fi
 
 # secrets
 if [ -f "$JAR_SCRIPTS/secrets.sh" ]; then
@@ -29,6 +27,15 @@ if [ -f "$JAR_SCRIPTS/secrets.sh" ]; then
 fi
 
 # <- init ->
+
+# Box specific
+if [[ $BOX == "personal" ]]; then
+  . "/Users/jaronearle/.deno/env"
+elif [[ $BOX == "mini" ]]; then
+  echo "mini"
+elif [[ $BOX == "work" ]]; then
+  echo "work"
+fi
 
 #thefuck
 eval "$(thefuck --alias)"
@@ -43,7 +50,4 @@ eval "$(tmuxifier init -)"
 eval "$(zoxide init zsh)"
 
 # fzf
-eval "$(fzf --zsh)"
-
-# load hooks
-# source "$JAR_HOOKS/nvm.sh"
+source <(fzf --zsh)

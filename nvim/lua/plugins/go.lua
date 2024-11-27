@@ -1,3 +1,3 @@
 return {
-  { "ray-x/go.nvim", enabled = false },
+  { "ray-x/go.nvim", enabled = true },
 }
