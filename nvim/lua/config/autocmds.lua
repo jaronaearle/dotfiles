@@ -26,12 +26,12 @@ createAutoCmd("WinLeave", {
 })
 
 -- show dashboard after closing last open buffer
-createAutoCmd("BufDelete", {
-  callback = function()
-    local bufnr = api.nvim_get_current_buf()
-    local name = api.nvim_buf_get_name(bufnr)
-    if name == "" then
-      cmd("Dashboard")
-    end
-  end,
-})
+-- createAutoCmd("BufDelete", {
+--   callback = function()
+--     local bufnr = api.nvim_get_current_buf()
+--     local name = api.nvim_buf_get_name(bufnr)
+--     if name == "" then
+--       cmd("Dashboard")
+--     end
+--   end,
+-- })
