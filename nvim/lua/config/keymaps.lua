@@ -62,28 +62,63 @@ keymap.set("n", "sw", 'diw"0P', optsFunc("Replace word under cursor with content
 keymap.set("n", "hs", ":split<Return>", opts)
 keymap.set("n", "vs", ":vsplit<Return>", opts)
 
--- Move window
-keymap.set("n", "sh", "<C-w>h")
-keymap.set("n", "sk", "<C-w>k")
-keymap.set("n", "sj", "<C-w>j")
-keymap.set("n", "sl", "<C-w>l")
-
 -- Resize window
 keymap.set("n", "<C-w><left>", "<C-w><")
 keymap.set("n", "<C-w><right>", "<C-w>>")
 keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-w><down>", "<C-w>-")
 
+-- Toggle word wrap
+local wrap_enabled = false
+keymap.set("n", "ww", function()
+  if wrap_enabled then
+    vim.opt.wrap = false
+    vim.opt.linebreak = false
+    vim.opt.list = true
+
+    -- Unmap keys in normal mode
+    vim.keymap.del("n", "j")
+    vim.keymap.del("n", "k")
+    vim.keymap.del("n", "0")
+    vim.keymap.del("n", "^")
+    vim.keymap.del("n", "$")
+
+    -- Unmap keys in visual mode
+    vim.keymap.del("v", "j")
+    vim.keymap.del("v", "k")
+    vim.keymap.del("v", "0")
+    vim.keymap.del("v", "^")
+    vim.keymap.del("v", "$")
+
+    wrap_enabled = false
+  else
+    vim.opt.wrap = true
+    vim.opt.linebreak = true
+    vim.opt.list = false
+
+    -- Remap keys in normal mode
+    vim.keymap.set("n", "j", "gj")
+    vim.keymap.set("n", "k", "gk")
+    vim.keymap.set("n", "0", "g0")
+    vim.keymap.set("n", "^", "g^")
+    vim.keymap.set("n", "$", "g$")
+
+    -- Remap keys in visual mode
+    vim.keymap.set("v", "j", "gj")
+    vim.keymap.set("v", "k", "gk")
+    vim.keymap.set("v", "0", "g0")
+    vim.keymap.set("v", "^", "g^")
+    vim.keymap.set("v", "$", "g$")
+
+    wrap_enabled = true
+  end
+end, optsFunc("Toggle word wrap"))
+
 -- tmux navigation
 keymap.set("n", "<C-h>", cmdFunc("TmuxNavigateLeft"), optsFunc("Go to left window"))
 keymap.set("n", "<C-j>", cmdFunc("TmuxNavigateDown"), optsFunc("Go to bottom window"))
 keymap.set("n", "<C-k>", cmdFunc("TmuxNavigateUp"), optsFunc("Go to top window"))
 keymap.set("n", "<C-l>", cmdFunc("TmuxNavigateRight"), optsFunc("Go to right window"))
-
---
--- quickly open/close diffview
-keymap.set("n", leaderMap("df"), cmdFunc("DiffviewOpen"), optsFunc("Open Diffview"))
-keymap.set("n", leaderMap("dF"), cmdFunc("DiffviewClose"), optsFunc("Close Diffview"))
 
 -- open oil in floating window
 keymap.set("n", "-", cmdFunc("Oil --float"), optsFunc("Open Oil in floating window"))
@@ -97,4 +132,4 @@ keymap.set("n", leaderMap("tl"), cbFunc(runner.run_last), optsFunc("Run last tes
 keymap.set("n", leaderMap("tL"), cbFunc(runner.run_last, { strategy = "dap" }), optsFunc("Run last with debugger"))
 
 -- undotree
--- keymap.set("u", leaderMap("u"), cmdFunc("lua require('undotree').toggle()"), optsFunc("Toggle undotree"))
+keymap.set("n", leaderMap("u"), cmdFunc("lua require('undotree').toggle()"), optsFunc("Toggle undotree"))
