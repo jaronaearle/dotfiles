@@ -133,3 +133,6 @@ keymap.set("n", leaderMap("tL"), cbFunc(runner.run_last, { strategy = "dap" }), 
 
 -- undotree
 keymap.set("n", leaderMap("u"), cmdFunc("lua require('undotree').toggle()"), optsFunc("Toggle undotree"))
+
+-- yeet
+keymap.set("n", "Yy", cmdFunc("Yeet"), optsFunc("Yeet that command"))
