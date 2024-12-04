@@ -1,4 +1,3 @@
--- even need?
 return {
-  { "chentoast/marks.nvim", enabled = true },
+  { "chentoast/marks.nvim", enabled = true, event = "VeryLazy", opts = { default_mappings = true } },
 }
