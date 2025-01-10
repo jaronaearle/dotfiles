@@ -58,6 +58,10 @@ keymap.set("n", "<S-u>", "<C-r>", { noremap = true, silent = true, desc = "Shift
 -- replace word under cursor with content from 0th register
 keymap.set("n", "sw", 'diw"0P', optsFunc("Replace word under cursor with content from 0th register"))
 
+-- navigate location list
+keymap.set("n", "[l", cmdFunc("lprev"), optsFunc("Previous location"))
+keymap.set("n", "]l", cmdFunc("lnext"), optsFunc("Next location"))
+
 -- Split window
 keymap.set("n", "hs", ":split<Return>", opts)
 keymap.set("n", "vs", ":vsplit<Return>", opts)
