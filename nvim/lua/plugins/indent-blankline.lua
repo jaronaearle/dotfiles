@@ -1,4 +1,3 @@
-local cmd = vim.cmd
 local hl = vim.api.nvim_set_hl
 local hooks = require("ibl.hooks")
 
@@ -16,12 +15,20 @@ end)
 
 return {
   "lukas-reineke/indent-blankline.nvim",
-  opts = function(_, opts)
-    opts.indent = { highlight = highlight, char = "" }
-    opts.whitespace = {
+  main = "ibl",
+  ---@module "ibl"
+  ---@type ibl.config
+  opts = {
+    indent = { highlight = highlight, char = "" },
+    whitespace = {
       highlight = highlight,
       remove_blankline_trail = false,
-    }
-    opts.scope = { enabled = true, show_start = true, show_end = true, show_exact_scope = true }
-  end,
+    },
+    scope = {
+      enabled = true,
+      show_start = true,
+      show_end = true,
+      show_exact_scope = true,
+    },
+  },
 }
