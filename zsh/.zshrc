@@ -111,8 +111,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Begin - jar config
 
-# load theme and env vars
-source ~/.config/theme/doom-jar.zsh-theme
+# load - env vars and source stuff
 source ~/.config/scripts/load.sh
 
 # Hide ruby prompt info as described here: https://stackoverflow.com/questions/39169744/rvm-showing-ruby-version-in-zsh
