@@ -13,7 +13,8 @@ alias t='tmux'
 alias tx='tmuxifier'
 alias cat='bat'
 alias cd='z'
-
+alias ls='eza -l'
+alias ip='ipconfig getifaddr en0'
 # Tool Specific
 
 # - Git
