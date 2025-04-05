@@ -26,7 +26,7 @@ opt.hlsearch = true
 opt.incsearch = true
 
 opt.termguicolors = true
-vim.o.background = ""
+-- vim.o.background = ""
 opt.scrolloff = 8
 opt.signcolumn = "yes"
 opt.isfname:append("@-@")

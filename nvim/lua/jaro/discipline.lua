@@ -1,10 +1,9 @@
 local M = {}
 
-local exclude_list = { "oil", "noice", "telescope" }
-
-local function e_ft()
-  for _, v in ipairs(exclude_list) do
-    if vim.bo.filetype == v then
+local function ignore_excluded_filetype()
+  local exclude_list = { "oil", "noice", "telescope" }
+  for _, excluded_file_type in ipairs(exclude_list) do
+    if vim.bo.filetype == excluded_file_type then
       return true
     end
   end
@@ -23,7 +22,7 @@ function M.cowboy()
       if vim.v.count > 0 then
         count = 0
       end
-      local fuck = e_ft()
+      local fuck = ignore_excluded_filetype()
       if count >= 10 and not fuck then
         ok, id =
           pcall(vim.notify, "Whoa there, Cowboy!" .. " (filetype: " .. vim.bo.filetype .. ")", vim.log.levels.WARN, {
