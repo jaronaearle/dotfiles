@@ -7,4 +7,4 @@
 # work = work laptop
 # mini personal desktop
 
-export BOX="personal"
+export BOX="work"

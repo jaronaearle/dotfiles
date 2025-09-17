@@ -5,6 +5,11 @@ source "$XDG_CONFIG_HOME/theme/doom-jar.zsh-theme"
 
 export JAR_SCRIPTS="$XDG_CONFIG_HOME/scripts"
 export JAR_HOOKS="$JAR_SCRIPTS/hooks"
+export ASDF_DATA_DIR="$XDG_CONFIG_HOME/asdf"
+
+# asdf
+. "/opt/homebrew/opt/asdf/libexec/asdf.sh"
+fpath=(${ASDF_DATA_DIR}/completions $fpath)
 
 # default editor
 export EDITOR="nvim"
@@ -13,8 +18,8 @@ export GIT_EDITOR="vim"
 
 # path
 export PATH=$PATH:/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH
-export PATH=$PATH:$HOME/Code/flutter/flutter/bin
 export PATH=$PATH:$XDG_CONFIG_HOME/tmux/plugins/tmuxifier/bin
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # export box
 if [ -f "$JAR_SCRIPTS/box.sh" ]; then
@@ -34,7 +39,6 @@ if [[ $BOX == "personal" ]]; then
 elif [[ $BOX == "mini" ]]; then
   echo "mini"
 elif [[ $BOX == "work" ]]; then
-  echo "work"
 fi
 
 #thefuck
@@ -42,9 +46,6 @@ eval "$(thefuck --alias)"
 
 # tmuxifier
 eval "$(tmuxifier init -)"
-
-# colorls
-# source "$(dirname $(gem which colorls))/tab_complete.sh"
 
 # zoxide
 eval "$(zoxide init zsh)"

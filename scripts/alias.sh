@@ -4,27 +4,16 @@ alias plz='sudo'
 alias g="git"
 alias b="brew"
 alias n="npm"
-alias y="yarn"
 alias pn='pnpm'
-alias ts='ts-node'
 alias nv='nvim'
 alias cg='cargo'
 alias t='tmux'
-alias tx='tmuxifier'
 alias cat='bat'
 alias cd='z'
 alias ls='eza -l'
 alias ip='ipconfig getifaddr en0'
-# Tool Specific
 
-# - Git
-# alias gcup=function() {
-#   git branch | grep -Ev "main|master" | xargs git branch -D
-# }
-#
-# alias sup=function() {
-#   local brah="$(git branch --show-current)" && g sup $brah
-# }
+# Tool Specific
 
 # - Npm
 alias nrn='npm run'
@@ -35,9 +24,9 @@ alias npk='npx npkill'
 # Pnpm
 alias prn='pnpm run'
 alias pi='pnpm i'
+alias ppub='pnpm publish:beta --no-git-checks'
 
 # Scripts
-# alias ls='~/.config/scripts/ls-tree.sh'
 alias gcup='~/.config/scripts/gcup.sh'
 
 # Utilities
