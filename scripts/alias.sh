@@ -27,7 +27,7 @@ alias pi='pnpm i'
 alias ppub='pnpm publish:beta --no-git-checks'
 
 # Scripts
-alias gcup='~/.config/scripts/gcup.sh'
+alias tc='~/.config/scripts/toggle-status.sh'
 
 # Utilities
 alias sz='source ~/.zshrc && echo sourced zshrc!'
