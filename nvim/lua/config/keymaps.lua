@@ -22,14 +22,15 @@ local optsFunc = function(des)
   return { noremap = true, desc = des, silent = true }
 end
 
+-- delete character without yanking
 keymap.set("n", "x", '"_x')
 
 -- delete line without yanking
 keymap.set({ "n", "v" }, "dl", '"_dd')
 
 -- copy/paste from system clipboard
-keymap.set({ "n", "v" }, "sy", '"+y', optsFunc("Copy to system clipboard - Normal | Visual"))
-keymap.set({ "n", "v" }, "sp", '"+p', optsFunc("Paste from system clipboard - Normal | Visual"))
+-- keymap.set({ "n", "v" }, "sy", '"+y', optsFunc("Copy to system clipboard - Normal | Visual"))
+-- keymap.set({ "n", "v" }, "sp", '"+p', optsFunc("Paste from system clipboard - Normal | Visual"))
 
 -- work with registers more easily
 -- register f
@@ -44,18 +45,17 @@ keymap.set({ "n", "v" }, leaderMap("gp"), '"gp', optsFunc("Paste from register g
 -- delete range marks y - z
 keymap.set("n", leaderMap("yz"), cmdFunc("'y,'zd<CR>delm yz<CR>"), optsFunc("Delete everything between marks y and z"))
 
--- insert newline above/below without leaving normal mode
+-- insert newline above/below without leaving normal mode -- insert AND preserve original location in line?
 keymap.set("n", leaderMap("o"), "o<ESC>k", optsFunc("Inserts newline below cursor"))
 keymap.set("n", leaderMap("O"), "O<ESC>j", optsFunc("Inserts newline above cursor"))
 
--- jk and kj = ESC
+-- jk = ESC
 keymap.set({ "i", "v", "n" }, "jk", "<ESC>", { noremap = true, silent = true, desc = "jk escapes" })
-keymap.set({ "i", "v", "n" }, "kj", "<ESC>", { noremap = true, silent = true, desc = "kj escapes" })
 
 -- redo with U
 keymap.set("n", "<S-u>", "<C-r>", { noremap = true, silent = true, desc = "Shift U to redo" })
 
--- replace word under cursor with content from 0th register
+-- replace word under cursor with content from 0th register -- Probably don't need anymore
 keymap.set("n", "sw", 'diw"0P', optsFunc("Replace word under cursor with content from 0th register"))
 
 -- navigate location list
@@ -137,6 +137,3 @@ keymap.set("n", leaderMap("tL"), cbFunc(runner.run_last, { strategy = "dap" }), 
 
 -- undotree
 keymap.set("n", leaderMap("u"), cmdFunc("lua require('undotree').toggle()"), optsFunc("Toggle undotree"))
-
--- yeet
-keymap.set("n", "Yy", cmdFunc("Yeet"), optsFunc("Yeet that command"))
