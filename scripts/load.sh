@@ -18,7 +18,7 @@ export GIT_EDITOR="vim"
 
 # path
 export PATH=$PATH:/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH
-export PATH=$PATH:$XDG_CONFIG_HOME/tmux/plugins/tmuxifier/bin
+# export PATH=$PATH:$XDG_CONFIG_HOME/tmux/plugins/tmuxifier/bin
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # export box
@@ -45,7 +45,7 @@ fi
 eval "$(thefuck --alias)"
 
 # tmuxifier
-eval "$(tmuxifier init -)"
+# eval "$(tmuxifier init -)"
 
 # zoxide
 eval "$(zoxide init zsh)"

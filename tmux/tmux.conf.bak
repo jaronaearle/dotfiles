@@ -108,31 +108,4 @@ set -g @shpell-gitlog-height '100%'
 run-shell "$HOME/Code/dotfiles/tmux/plugins/tmux-grimoire/grimoire.tmux"
 
 # init the fucker
-set -g @plugin 'navahas/tmux-grimoire'
-
-# ─── Tmux Grimoire Configuration ───────────────
-# Uncomment and customize these options as needed
-
-# Global appearance
-# set -g @grimoire-title ' grimoire '
-# set -g @grimoire-color '#c6b7ee'
-# set -g @grimoire-width '80%'
-# set -g @grimoire-height '30%'
-# set -g @grimoire-position 'bottom-center'
-
-# Example custom shpells:
-# Standard shpell (persistent)
-# bind-key -T prefix q run-shell "custom_shpell standard dev"
-
-# Ephemeral shpell with custom styling (closes after use)
-# bind-key -T prefix G run-shell "custom_shpell ephemeral gitlog \"git log --oneline --graph --decorate --all\""
-# set -g @shpell-gitlog-color    '#e3716e'
-# set -g @shpell-gitlog-position 'right'
-# set -g @shpell-gitlog-width    '50%'
-# set -g @shpell-gitlog-height   '100%'
-
-# More examples:
-# bind-key -T prefix E run-shell "custom_shpell standard notes"
-# bind-key -T prefix b run-shell "custom_shpell standard rust-build 'cargo build' --replay"
-
 run '~/.tmux/plugins/tpm/tpm'
